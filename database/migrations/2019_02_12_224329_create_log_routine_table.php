@@ -18,8 +18,8 @@ class CreateLogRoutineTable extends Migration
             $table->integer('log_id')->unsigned();
             $table->integer('routine_id')->unsigned();
             
-            $table->foreign('log_id')->references('id')->on('logs');
             $table->foreign('routine_id')->references('id')->on('routines');
+            $table->foreign('log_id')->references('id')->on('logs');
 
             $table->timestamps();
         });

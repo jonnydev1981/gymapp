@@ -19,9 +19,10 @@ class CreateWorkoutsTable extends Migration
             $table->integer('rating')->nullable();
             $table->integer('log_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            
-            $table->foreign('log_id')->references('id')->on('logs');
+
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('log_id')->references('id')->on('logs');
+            
             $table->timestamps();
         });
     }

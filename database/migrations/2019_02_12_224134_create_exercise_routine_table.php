@@ -18,9 +18,9 @@ class CreateExerciseRoutineTable extends Migration
             $table->integer('exercise_id')->unsigned();
             $table->integer('routine_id')->unsigned();
             
-            $table->foreign('exercise_id')->references('id')->on('exercises');
             $table->foreign('routine_id')->references('id')->on('routines');
-
+            $table->foreign('exercise_id')->references('id')->on('exercises');
+            
             $table->timestamps();
         });
     }

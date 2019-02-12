@@ -18,9 +18,9 @@ class CreateRoutineUserTable extends Migration
             $table->integer('routine_id')->unsigned();
             $table->integer('user_id')->unsigned();
 
-            $table->foreign('routine_id')->references('id')->on('routines');
             $table->foreign('user_id')->references('id')->on('users');
-            
+            $table->foreign('routine_id')->references('id')->on('routines');
+
             $table->timestamps();
         });
     }

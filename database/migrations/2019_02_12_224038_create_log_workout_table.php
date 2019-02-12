@@ -18,8 +18,8 @@ class CreateLogWorkoutTable extends Migration
             $table->integer('log_id')->unsigned();
             $table->integer('workout_id')->unsigned();
             
-            $table->foreign('log_id')->references('id')->on('logs');
             $table->foreign('workout_id')->references('id')->on('workouts');
+            $table->foreign('log_id')->references('id')->on('logs');
 
             $table->timestamps();
         });
