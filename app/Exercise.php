@@ -8,6 +8,8 @@ class Exercise extends Model
 {
     //
     protected $fillable = [
-        'name', 'description', 'url',
+        'name',
+        'description',
+        'url',
     ];
 }

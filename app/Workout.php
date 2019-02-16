@@ -8,6 +8,9 @@ class Workout extends Model
 {
     //
     protected $fillable = [
-        'comments', 'rating',
+        'comments',
+        'rating',
+        'lod_id',
+        'user_id',
     ];
 }

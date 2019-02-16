@@ -8,6 +8,11 @@ class Routine extends Model
 {
     //
     protected $fillable = [
-        'name', 'description', 'sets', 'reps', 
+        'name',
+        'description',
+        'sets',
+        'reps',
+        'exercide_id',
+        'user_id', 
     ];
 }
