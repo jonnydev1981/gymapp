@@ -12,7 +12,15 @@ class Routine extends Model
         'description',
         'sets',
         'reps',
-        'exercide_id',
+        'exercise_id',
         'user_id', 
     ];
+
+    public function exercises(){
+        return $this->hasMany('App\Exercise');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

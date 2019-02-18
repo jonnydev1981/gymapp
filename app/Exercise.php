@@ -12,4 +12,8 @@ class Exercise extends Model
         'description',
         'url',
     ];
+
+    public function routines(){
+        return $this->belongsToMany('App\Routine');
+    }
 }

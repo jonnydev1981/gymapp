@@ -11,4 +11,8 @@ class UserWorkout extends Model
         'user_id',
         'workout_id',
     ];
+
+    public function users(){
+        return $this->belongsToMany('App\Models\User');
+    }
 }

@@ -13,4 +13,8 @@ class Log extends Model
         'weight',
         'routine_id',
     ];
+
+    public function routines(){
+        return $this->belongsToMany('App\Routine');
+    }
 }
