@@ -29,18 +29,14 @@ class User extends Authenticatable
     ];
 
     public function routines(){
-        return $this->hasMany('App\Models\Routine');
+        return $this->hasMany('App\Routine');
     }
 
     public function workouts(){
-        return $this->hasMany('App\Models\Workout');
+        return $this->hasMany('App\Workout');
     }
 
     public function logs(){
-        return $this->hasMany('App\Models\Log');
-    }
-
-    public function workouts(){
-        return $this->belongsToMany('App\Workout');
+        return $this->hasMany('App\Log');
     }
 }

@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <p>You are logged in!</p>
+
+                    <p>Stats will be shown here, recent workout logs, graphs (1RM etc).</p>
                 </div>
             </div>
         </div>
