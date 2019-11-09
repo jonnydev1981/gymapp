@@ -2,17 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div class="content">
-            
+        <div class="row">
+            <div class="col-sm"></div>
+
             <div class="col-sm">
                 <h1>GymApp</h1>
+                <p>Login to access your profile.</p>
             </div>
-
-            <div>
-                Login to access your profile.
-            </div>
-
+            
+            <div class="col-sm"></div>
         </div>
+        
     </div>
 @endsection
         
