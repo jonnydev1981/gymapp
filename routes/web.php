@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/log', 'LogController@index')->name('log');
-Route::get('/profile', 'ProfileController@index')->name('profile');
+
+Route::resource('profile','ProfileController');
