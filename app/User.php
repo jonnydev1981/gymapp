@@ -39,4 +39,9 @@ class User extends Authenticatable
     public function logs(){
         return $this->hasMany('App\Log');
     }
+
+    public function profile()
+    {
+        return $this->hasOne('App\Profile');
+    }
 }

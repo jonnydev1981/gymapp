@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
+use App\Profile;
 
 use Illuminate\Http\Request;
 
@@ -16,9 +18,10 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('profile');
+        $profile = User::find($id);
+        return view('profiles.edit', compact('profile'));
     }
 
     /**
@@ -39,7 +42,20 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required'
+        ]);
+
+        $profile = new Profile([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'gravatar' => $request->get('gravatar'),
+            'bio' => $request->get('bio')
+        ]);
+
+        $profile->save();
+        return redirect('/profiles')->with('success', 'Profile saved!');
     }
 
     /**
@@ -61,7 +77,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $profile = Profile::find($id);
+        return view('profiles.edit', compact('profile'));
     }
 
     /**
@@ -73,7 +90,20 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required'
+        ]);
+
+        $profile = new Profile([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'gravatar' => $request->get('gravatar'),
+            'bio' => $request->get('bio')
+        ]);
+
+        $profile->save();
+        return redirect('/profiles')->with('success', 'Profile updated!');
     }
 
     /**

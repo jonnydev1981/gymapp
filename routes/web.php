@@ -18,6 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/log', 'LogController@index')->name('log');
+Route::get('log', 'LogController@index')->name('log');
 
-Route::resource('profile','ProfileController');
+Route::resource('profiles','ProfileController');
