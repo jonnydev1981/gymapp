@@ -19,6 +19,9 @@ class CreateProfilesTable extends Migration
             $table->string('gravatar');
             $table->longText('bio')->nullable();
 
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->timestamps();
         });
     }
