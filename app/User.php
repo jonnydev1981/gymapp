@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'gravatar', 'bio',
     ];
 
     public function routines(){
@@ -38,10 +38,5 @@ class User extends Authenticatable
 
     public function logs(){
         return $this->hasMany('App\Log');
-    }
-
-    public function profile()
-    {
-        return $this->hasOne('App\Profile');
     }
 }

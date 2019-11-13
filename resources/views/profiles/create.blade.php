@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <h1>Profile</h1>
+                <h1>Create Profile</h1>
 
                 @if ($errors->any())
                 <div class="alert alert-danger">
@@ -26,19 +26,11 @@
 
                 <form method="post" action="{{ route('profiles.store') }}">
                     @csrf
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" value="John">
-                    </div>
 
                     <div class="form-group">
                         <label for="gravatar">Gravatar</label>
                         <input type="file" class="form-control-file" name="gravatar" id="gravatar">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" class="form-control" name="email" id="email" value="name@example.com">
+                        <input type="hidden" class="form-control" name="id" id="id" value="{{ Auth::user()->id }}">
                     </div>
 
                     <div class="form-group">

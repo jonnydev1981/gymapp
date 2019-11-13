@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\User;
-use App\Profile;
 
 use Illuminate\Http\Request;
 
@@ -20,8 +19,9 @@ class ProfileController extends Controller
      */
     public function index($id)
     {
-        $profile = User::find($id);
-        return view('profiles.edit', compact('profile'));
+        $profiles = User::all();
+
+        return view('profiles.index', compact('profiles'));
     }
 
     /**
@@ -43,19 +43,17 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required'
+            'bio'=>'required'
         ]);
 
-        $profile = new Profile([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
+        $profile = new User([
             'gravatar' => $request->get('gravatar'),
-            'bio' => $request->get('bio')
+            'bio' => $request->get('bio'),
+            'user_id' => $request->get('id')
         ]);
 
         $profile->save();
-        return redirect('/profiles')->with('success', 'Profile saved!');
+        return redirect('/profiles.index')->with('success', 'Profile created!')->with('profile', $profile);
     }
 
     /**
@@ -77,8 +75,9 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $profile = Profile::find($id);
-        return view('profiles.edit', compact('profile'));
+        $profile = User::find($id);
+
+        return view('profiles.edit')->with('profile', $profile);
     }
 
     /**
@@ -90,20 +89,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required'
-        ]);
-
-        $profile = new Profile([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'gravatar' => $request->get('gravatar'),
-            'bio' => $request->get('bio')
-        ]);
-
-        $profile->save();
-        return redirect('/profiles')->with('success', 'Profile updated!');
+        //
     }
 
     /**

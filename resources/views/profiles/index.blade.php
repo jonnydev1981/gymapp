@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <h1>Edit Profile</h1>
+                <h1>View Profile</h1>
 
                 @if ($errors->any())
                 <div class="alert alert-danger">
@@ -25,7 +25,6 @@
                 </div>
 
                 <form method="post" action="{{ route('profiles.edit') }}">
-                    @method('PATCH')
                     @csrf
 
                     <div class="form-group">
@@ -36,13 +35,13 @@
 
                     <div class="form-group">
                         <label for="bio">Bio</label>
-                        <textarea class="form-control" name="bio" id="bio" rows="3">
-                            {{ $profile->bio }}
+                        <textarea class="form-control" name="bio" id="bio" rows="3" disabled>
+                            {{  }}
                         </textarea>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
                     </div>
 
                 </form>
