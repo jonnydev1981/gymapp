@@ -4,10 +4,10 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <h1>GymApp</h1>
-                <p>Login to access your profile.</p>
+            <h1>Log of Workouts</h1>
+            
             </div>
         </div>
+        
     </div>
 @endsection
-        
