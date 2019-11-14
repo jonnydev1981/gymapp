@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -17,11 +18,13 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $profiles = User::all();
+        $profile = User::find(Auth::id());
 
-        return view('profiles.index', compact('profiles'));
+        //dd($profiles);
+
+        return view('profile.index')->with('profile', $profile);
     }
 
     /**
@@ -42,18 +45,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'bio'=>'required'
-        ]);
-
-        $profile = new User([
-            'gravatar' => $request->get('gravatar'),
-            'bio' => $request->get('bio'),
-            'user_id' => $request->get('id')
-        ]);
-
-        $profile->save();
-        return redirect('/profiles.index')->with('success', 'Profile created!')->with('profile', $profile);
+        //
     }
 
     /**
@@ -62,9 +54,13 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $profile = User::find(Auth::id());
+
+        //dd($profiles);
+
+        return view('profile.index')->with('profile', $profile);
     }
 
     /**
@@ -73,11 +69,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $profile = User::find($id);
 
-        return view('profiles.edit')->with('profile', $profile);
     }
 
     /**
@@ -89,7 +83,17 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'bio'=>'required'
+        ]);
+
+        $profile = User::find($id);
+
+        $profile->gravatar = $request->get('gravatar');
+        $profile->bio = $request->get('bio');
+
+        $profile->save();
+        return redirect('/profile')->with('profile', $profile)->with('success', 'Profile Updated!');
     }
 
     /**

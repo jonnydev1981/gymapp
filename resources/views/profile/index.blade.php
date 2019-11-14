@@ -24,25 +24,22 @@
                     @endif
                 </div>
 
-                <form method="post" action="{{ route('profiles.edit') }}">
+                <form method="post" action="{{ route('profile.update', Auth::user()->id) }}">
                     @method('PATCH')
                     @csrf
 
                     <div class="form-group">
                         <label for="gravatar">Gravatar</label>
                         <input type="file" class="form-control-file" name="gravatar" id="gravatar">
-                        <input type="hidden" class="form-control" name="id" id="id" value="{{ Auth::user()->id }}">
                     </div>
 
                     <div class="form-group">
                         <label for="bio">Bio</label>
-                        <textarea class="form-control" name="bio" id="bio" rows="3">
-                            {{ $profile->bio }}
-                        </textarea>
+                        <textarea class="form-control" name="bio" id="bio" rows="3">{{ $profile->bio }}</textarea>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
                     </div>
 
                 </form>
