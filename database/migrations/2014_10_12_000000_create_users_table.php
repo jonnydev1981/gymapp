@@ -20,10 +20,15 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+<<<<<<< HEAD
 
             $table->integer('box_id')->unsigned();
             $table->foreign('box_id')->references('id')->on('boxes');
 
+=======
+            $table->string('gravatar')->nullable();
+            $table->longText('bio')->nullable();
+>>>>>>> 7b581b0706212a53015b1579d788198a7ecde511
             $table->timestamps();
         });
     }

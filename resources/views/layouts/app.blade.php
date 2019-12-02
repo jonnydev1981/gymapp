@@ -49,7 +49,8 @@
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('/profiles/{profile}/edit') }}">Profile</a>
+                            <!-- <a class="nav-link" href="/profiles/{{ Auth::user()->id }}/edit">Profile</a> -->
+                            <a class="nav-link" href="/profile">Profile</a>
                         </li>
                     @endguest
                     </ul>
