@@ -14,15 +14,11 @@ class Workout extends Model
         'user_id',
     ];
 
-    public function logs(){
-        return $this->hasMany('App\Models\Log');
-    }
-
     public function user(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\User');
     }
 
-    public function users(){
-        return $this->belongsToMany('App\User');
+    public function workoutlines(){
+        return $this->hasMany('App\WorkoutLine');
     }
 }

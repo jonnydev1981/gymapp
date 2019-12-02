@@ -13,7 +13,11 @@ class Exercise extends Model
         'url',
     ];
 
-    public function routines(){
-        return $this->belongsToMany('App\Routine');
+    public function workoutlines(){
+        return $this->belongsToMany('App\WorkoutLine');
+    }
+
+    public function wodlines(){
+        return $this->belongsToMany('App\WodLine');
     }
 }

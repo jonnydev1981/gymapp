@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'gravatar', 'bio',
+        'name', 'email', 'password', 'box_id',
     ];
 
     /**
@@ -28,15 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function routines(){
-        return $this->hasMany('App\Routine');
+    public function box(){
+        return $this->belongsTo('App\Box');
     }
 
     public function workouts(){
         return $this->hasMany('App\Workout');
-    }
-
-    public function logs(){
-        return $this->hasMany('App\Log');
     }
 }
