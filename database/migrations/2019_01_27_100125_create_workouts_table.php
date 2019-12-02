@@ -16,14 +16,14 @@ class CreateWorkoutsTable extends Migration
         Schema::create('workouts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->longtext('description');
-            $table->timestamp('workout_performed');
+            $table->longtext('description')->nullable();
+            
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('plan_id')->references('id')->on('plans');
-            $table->foreign('note_id')->references('id')->on('notes');
-            $table->integer('exercise_sets_performed');
-            $table->integer('exercise_reps_performed');
-            $table->integer('exercise_weight_kg');
+
+            $table->integer('wod_id')->unsigned();
+            $table->foreign('wod_id')->references('id')->on('wods');
+
             $table->timestamps();
         });
     }

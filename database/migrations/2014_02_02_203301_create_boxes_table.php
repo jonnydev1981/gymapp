@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLogRoutineTable extends Migration
+class CreateBoxesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateLogRoutineTable extends Migration
      */
     public function up()
     {
-        Schema::create('log_routine', function (Blueprint $table) {
+        Schema::create('boxes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('log_id')->unsigned();
-            $table->integer('routine_id')->unsigned();
-            
-            $table->foreign('routine_id')->references('id')->on('routines');
-            $table->foreign('log_id')->references('id')->on('logs');
+
+            $table->string('name');
+            $table->longtext('address')->nullable();
 
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ class CreateLogRoutineTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('log_routine');
+        Schema::dropIfExists('boxes');
     }
 }

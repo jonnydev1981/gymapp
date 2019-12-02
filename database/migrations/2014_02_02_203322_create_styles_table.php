@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLogsTable extends Migration
+class CreateStylesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('styles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->longtext('description');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('workout_id')->references('id')->on('workouts');
+
+            $table->string('style');
+            $table->enum('metric', ['time', 'weight', 'reps', 'distance']);
+
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists('styles');
     }
 }
