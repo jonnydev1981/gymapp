@@ -6,6 +6,7 @@ use App\Workout;
 use App\WorkoutLine;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WorkoutController extends Controller
 {
@@ -16,7 +17,7 @@ class WorkoutController extends Controller
      */
     public function index()
     {
-        //
+        return view('workout.index')-with('workouts', Workout::where('user_id', Auth::id()));
     }
 
     /**
