@@ -15,11 +15,13 @@ class CreateWorkoutLinesTable extends Migration
     {
         Schema::create('workout_lines', function (Blueprint $table) {
             $table->increments('id');
-            
+
             $table->integer('order');
+            $table->integer('sets');
             $table->integer('reps');
             $table->integer('weight');
             $table->boolean('scaled');
+            $table->boolean('completed');
 
             $table->integer('workout_id')->unsigned();
             $table->foreign('workout_id')->references('id')->on('workouts');

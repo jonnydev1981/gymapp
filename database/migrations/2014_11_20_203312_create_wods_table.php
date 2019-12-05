@@ -17,6 +17,7 @@ class CreateWodsTable extends Migration
             $table->increments('id');
 
             $table->longtext('description');
+            $table->time('rx_time');
 
             $table->integer('style_id')->unsigned();
             $table->foreign('style_id')->references('id')->on('styles');

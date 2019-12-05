@@ -17,17 +17,16 @@ class CreateWodLinesTable extends Migration
             $table->increments('id');
 
             $table->integer('order');
+            $table->integer('rx_sets');
             $table->integer('rx_reps');
-            $table->integer('rx_weight');
+            $table->integer('rx_weight_m');
+            $table->integer('rx_weight_f');
 
             $table->integer('wod_id')->unsigned();
             $table->foreign('wod_id')->references('id')->on('wods');
 
             $table->integer('exercise_id')->unsigned();
             $table->foreign('exercise_id')->references('id')->on('exercises');
-
-            $table->integer('workout_id')->unsigned();
-            $table->foreign('workout_id')->references('id')->on('styles');
 
             $table->timestamps();
         });
