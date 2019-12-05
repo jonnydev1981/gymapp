@@ -8,10 +8,12 @@ class Workout extends Model
 {
     //
     protected $fillable = [
-        'comments',
-        'rating',
-        'lod_id',
+        'name',
+        'description',
+        'performed_on',
+        'time_taken',
         'user_id',
+        'wod_id',
     ];
 
     public function user(){

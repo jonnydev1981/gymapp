@@ -28,19 +28,18 @@
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach ($workouts as $workout)
+                        @foreach ($workoutlines as $workoutline)
                             <tr>
                                 <th scope="row">{{ $workout->id }}</th>
                                 <td>{{ $workout->name }}</td>
                                 <td>{{ $workout->description }}</td>
                                 <td>{{ $workout->performed_on }}</td>
-                                <td><button type="button" class="btn-sm btn-primary">View</button></td>
+                                <td><button type="button" class="btn-sm btn-primary">Update</button></td>
                                 <td><button type="button" class="btn-sm btn-danger">Delete</button></td>
                             </tr>
                         @endforeach
                         </tbody>
                       </table>
-
                 </div>
             </div>
         </div>
