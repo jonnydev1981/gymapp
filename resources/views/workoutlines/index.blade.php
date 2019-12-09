@@ -14,32 +14,33 @@
                         </div>
                     @endif
 
-                    <p>List of recent workouts.</p>
+                    <p>Workout View</p>
 
                     <table class="table table-dark">
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Performed On</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
+                            <th scope="col">Order</th>
+                            <th scope="col">Sets</th>
+                            <th scope="col">Reps</th>
+                            <th scope="col">Weight</th>
+                            <th scope="col">Scaled</th>
+                            <th scope="col">Completed</th>
                           </tr>
                         </thead>
                         <tbody>
                         @foreach ($workoutlines as $workoutline)
                             <tr>
-                                <th scope="row">{{ $workout->id }}</th>
-                                <td>{{ $workout->name }}</td>
-                                <td>{{ $workout->description }}</td>
-                                <td>{{ $workout->performed_on }}</td>
-                                <td><button type="button" class="btn-sm btn-primary">Update</button></td>
-                                <td><button type="button" class="btn-sm btn-danger">Delete</button></td>
+                                <th scope="row">{{ $workoutline->order }}</th>
+                                <td>{{ $workoutline->sets }}</td>
+                                <td>{{ $workoutline->reps }}</td>
+                                <td>{{ $workoutline->weight }}</td>
+                                <td>{{ $workoutline->scaled }}</td>
+                                <td>{{ $workoutline->completed }}</td>
                             </tr>
                         @endforeach
                         </tbody>
                       </table>
+
                 </div>
             </div>
         </div>

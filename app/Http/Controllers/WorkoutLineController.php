@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Workout;
-
+use App\WorkoutLine;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class WorkoutController extends Controller
+class WorkoutLineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,7 @@ class WorkoutController extends Controller
      */
     public function index()
     {
-        //dd(Workout::where('user_id', Auth::id()));
-        $userWorkouts = Workout::where('user_id', Auth::id())->get();
-
-        return view('workouts.index')->with('workouts', $userWorkouts);
+        //
     }
 
     /**
@@ -51,7 +46,14 @@ class WorkoutController extends Controller
      */
     public function show($id)
     {
-        //
+        //dd($id);
+
+        $userWorkoutLines = WorkoutLine::where('workout_id', '1');
+        foreach ($userWorkoutLines as $userWorkoutLine) {
+            dd($userWorkoutLine);
+        }
+
+        return view('workoutlines.index')->with('workoutlines', $userWorkoutLines);
     }
 
     /**
