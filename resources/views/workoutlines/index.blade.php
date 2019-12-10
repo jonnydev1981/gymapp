@@ -22,7 +22,8 @@
                             <th scope="col">Order</th>
                             <th scope="col">Sets</th>
                             <th scope="col">Reps</th>
-                            <th scope="col">Weight</th>
+                            <th scope="col">Exercise</th>
+                            <th scope="col">Weight (KG)</th>
                             <th scope="col">Scaled</th>
                             <th scope="col">Completed</th>
                           </tr>
@@ -33,9 +34,22 @@
                                 <th scope="row">{{ $workoutline->order }}</th>
                                 <td>{{ $workoutline->sets }}</td>
                                 <td>{{ $workoutline->reps }}</td>
+                                <td>{{ $workoutline->exercise->name }}</td>
                                 <td>{{ $workoutline->weight }}</td>
-                                <td>{{ $workoutline->scaled }}</td>
-                                <td>{{ $workoutline->completed }}</td>
+                                <td>
+                                    @if ($workoutline->scaled === '1')
+                                        <span class="badge badge-danger">Yes</span>
+                                    @else
+                                        <span class="badge badge-success">No</span>
+                                    @endif
+                                </td>
+                                <td>
+                                @if ($workoutline->completed === '1')
+                                    <span class="badge badge-success">Yes</span>
+                                @else
+                                    <span class="badge badge-danger">No</span>
+                                @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

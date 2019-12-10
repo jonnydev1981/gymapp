@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exercise;
 use App\WorkoutLine;
 use Illuminate\Http\Request;
 
@@ -46,14 +47,11 @@ class WorkoutLineController extends Controller
      */
     public function show($id)
     {
-        //dd($id);
+        $userWorkoutLines = WorkoutLine::where('workout_id', $id)->get();
+        //$userExerciseLines = Exercise::where()->get();
 
-        $userWorkoutLines = WorkoutLine::where('workout_id', '1');
-        foreach ($userWorkoutLines as $userWorkoutLine) {
-            dd($userWorkoutLine);
-        }
-
-        return view('workoutlines.index')->with('workoutlines', $userWorkoutLines);
+        return view('workoutlines.index')
+            ->with('workoutlines', $userWorkoutLines);
     }
 
     /**

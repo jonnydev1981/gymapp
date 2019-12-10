@@ -18,6 +18,6 @@ class Exercise extends Model
     }
 
     public function wodlines(){
-        return $this->belongsToMany('App\WodLine');
+        return $this->hasMany('App\WodLine');
     }
 }
