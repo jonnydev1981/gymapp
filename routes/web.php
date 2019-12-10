@@ -22,3 +22,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('workout','WorkoutController');
 Route::resource('workoutline','WorkoutLineController');
 Route::resource('wod','WodController');
+Route::resource('exercise','ExerciseController');

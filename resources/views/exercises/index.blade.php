@@ -14,12 +14,11 @@
                         </div>
                     @endif
 
-                    <p>Workout View</p>
+                    <p>Exercise Historical View</p>
 
                     <table class="table table-dark">
                         <thead>
                           <tr>
-                            <th scope="col">Order</th>
                             <th scope="col">Sets</th>
                             <th scope="col">Reps</th>
                             <th scope="col">Exercise</th>
@@ -29,22 +28,21 @@
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach ($workoutlines as $workoutline)
+                        @foreach ($exercises as $exercise)
                             <tr>
-                                <th scope="row">{{ $workoutline->order }}</th>
-                                <td>{{ $workoutline->sets }}</td>
-                                <td>{{ $workoutline->reps }}</td>
-                                <td><a href="{{ route('exercise.show', $workoutline->exercise->id) }}">{{ $workoutline->exercise->name }}</a></td>
-                                <td>{{ $workoutline->weight }}</td>
+                                <th scope="row">{{ $exercise->sets }}</th>
+                                <td>{{ $exercise->reps }}</td>
+                                <td>{{ $exercise->exercise->name }}</td>
+                                <td>{{ $exercise->weight }}</td>
                                 <td>
-                                    @if ($workoutline->scaled === '1')
+                                    @if ($exercise->scaled === '1')
                                         <span class="badge badge-danger">Yes</span>
                                     @else
                                         <span class="badge badge-success">No</span>
                                     @endif
                                 </td>
                                 <td>
-                                @if ($workoutline->completed === '1')
+                                @if ($exercise->completed === '1')
                                     <span class="badge badge-success">Yes</span>
                                 @else
                                     <span class="badge badge-danger">No</span>
