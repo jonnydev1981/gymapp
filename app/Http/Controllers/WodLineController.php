@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Style;
-use App\Wod;
-use App\WodLine;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class WodController extends Controller
+class WodLineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +23,7 @@ class WodController extends Controller
      */
     public function create()
     {
-        return view('wods.create')->with('styles', Style::all());
+        //
     }
 
     /**
@@ -38,33 +34,7 @@ class WodController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->ajax()) {
-            $rules = array(
-                'first_name.*'  => 'required',
-                'last_name.*'  => 'required'
-            );
-            $error = Validator::make($request->all(), $rules);
-            if ($error->fails()) {
-                return response()->json([
-                    'error'  => $error->errors()->all()
-                ]);
-            }
-
-            $first_name = $request->first_name;
-            $last_name = $request->last_name;
-            for ($count = 0; $count < count($first_name); $count++) {
-                $data = array(
-                    'first_name' => $first_name[$count],
-                    'last_name'  => $last_name[$count]
-                );
-                $insert_data[] = $data;
-            }
-
-            WodLine::insert($insert_data);
-            return response()->json([
-                'success'  => 'Data Added successfully.'
-            ]);
-        }
+        //
     }
 
     /**

@@ -16,7 +16,8 @@
 
                     <p>Create a WOD.</p>
 
-                    @if ()
+                    @if (!isset($request->id))
+
                         {{--
                             create a wod header first, then use if to show the lines underneath
                             wods table - header
@@ -36,8 +37,9 @@
 
                         <div class="form-group">
                             <div class="well">
-                                <div id="rx_time" name="rx_time" class="input-append">
-                                    <input data-format="hh:mm:ss" type="text"></input>
+                                <div class="input-append">
+                                    <label for="rx_time">RX Time</label>
+                                    <input data-format="hh:mm:ss" id="rx_time" name="rx_time" type="text"></input>
                                     <span class="add-on">
                                     <i data-time-icon="icon-time" data-date-icon="icon-calendar">
                                     </i>
@@ -67,6 +69,9 @@
                             <input type="hidden" id="box_id" name="box_id" value="{{ Auth::user()->box->id }}">
                         </div>
 
+                        @csrf
+                        <input type="submit" name="save" id="save" class="btn btn-primary" value="Save" />
+
                     @else
 
                         {{--
@@ -82,7 +87,7 @@
                     --}}
 
                     <div class="table-responsive">
-                            <form method="post" id="dynamic_form">
+                            <form method="post" id="{{ route('wodline.create') }}">
                             <span id="result"></span>
                             <table class="table table-bordered table-striped" id="user_table">
                                 <thead>
