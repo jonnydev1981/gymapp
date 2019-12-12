@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Wod extends Model
 {
+    protected $fillable = [
+        'description',
+        'rx_time',
+        'box_id',
+        'style_id',
+    ];
+
     public function box(){
         return $this->belongsTo('App\Box');
     }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Style;
 use App\Wod;
 use App\WodLine;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class WodController extends Controller
@@ -38,6 +37,22 @@ class WodController extends Controller
      */
     public function store(Request $request)
     {
+        if(isset($request->box_id)) {
+            $request->validate([
+                'description' => 'required|max:255',
+                'rx_time' => 'numeric|max:120',
+                'style_id' => 'required',
+                'box_id' => 'required',
+            ]);
+
+            $wod = Wod::create($request->all());
+
+            return view('wods.create')->with('wod',$wod)->with('success','WOD created successfully!');
+        }
+
+
+
+        /*
         if ($request->ajax()) {
             $rules = array(
                 'first_name.*'  => 'required',
@@ -65,6 +80,7 @@ class WodController extends Controller
                 'success'  => 'Data Added successfully.'
             ]);
         }
+        */
     }
 
     /**

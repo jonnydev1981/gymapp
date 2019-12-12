@@ -8,6 +8,16 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -16,7 +26,7 @@
 
                     <p>Create a WOD.</p>
 
-                    @if (!isset($request->id))
+                    @if (!isset($wod))
 
                         {{--
                             create a wod header first, then use if to show the lines underneath
@@ -28,49 +38,39 @@
                             box_id
                         --}}
 
-                        <form method="post" id="{{ route('wod.create') }}">
+                        <form method="post" action="{{ route('wod.store') }}">
 
-                        <div class="form-group">
-                            <label for="description">WOD Description</label>
-                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label for="description">WOD Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                            </div>
 
-                        <div class="form-group">
-                            <div class="well">
-                                <div class="input-append">
-                                    <label for="rx_time">RX Time</label>
-                                    <input data-format="hh:mm:ss" id="rx_time" name="rx_time" type="text"></input>
-                                    <span class="add-on">
-                                    <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-                                    </i>
-                                    </span>
+                            <div class="form-group">
+                                <div class="well">
+                                    <div class="input-append">
+                                        <label for="rx_time">RX Time (Mins)</label>
+                                        <input id="rx_time" name="rx_time" type="text"></input>
+                                    </div>
                                 </div>
                             </div>
 
-                            <script type="text/javascript">
-                            $(function() {
-                                $('#rx_time').datetimepicker({
-                                pickDate: false
-                                });
-                            });
-                            </script>
-                        </div>
+                            <div class="form-group">
+                                <select id="style_id" name="style_id" class="custom-select">
+                                    <option selected>Workout style select</option>
+                                    @foreach ($styles as $style)
+                                        <option value="{{ $style->id }}">{{ $style->style }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        <div class="form-group">
-                            <select id="style_id" name="style_id" class="custom-select">
-                                <option selected>Workout style select</option>
-                                @foreach ($styles as $style)
-                                    <option value="{{ $style->id }}">{{ $style->style }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                <input type="hidden" id="box_id" name="box_id" value="{{ Auth::user()->box->id }}">
+                                <input type="hidden" id="wod_create" name="wod_create" value="true">
+                            </div>
 
-                        <div class="form-group">
-                            <input type="hidden" id="box_id" name="box_id" value="{{ Auth::user()->box->id }}">
-                        </div>
-
-                        @csrf
-                        <input type="submit" name="save" id="save" class="btn btn-primary" value="Save" />
+                            @csrf
+                            <input type="submit" name="save" id="save" class="btn btn-primary" value="Save" />
+                        </form>
 
                     @else
 
