@@ -45,11 +45,55 @@
                                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                             </div>
 
+                            <script>
+                                function formatTime(timeInput) {
+
+                                    intValidNum = timeInput.value;
+                                  
+                                    if (intValidNum < 24 && intValidNum.length == 2) {
+                                        timeInput.value = timeInput.value + ":";
+                                        return false;  
+                                    }
+                                    if (intValidNum == 24 && intValidNum.length == 2) {
+                                        timeInput.value = timeInput.value.length - 2 + "0:";
+                                        return false;
+                                    }
+                                    if (intValidNum > 24 && intValidNum.length == 2) {
+                                        timeInput.value = "";
+                                        return false;
+                                    }
+                                  
+                                    if (intValidNum.length == 5 && intValidNum.slice(-2) < 60) {
+                                      timeInput.value = timeInput.value + ":";
+                                      return false;
+                                    }
+                                    if (intValidNum.length == 5 && intValidNum.slice(-2) > 60) {
+                                      timeInput.value = timeInput.value.slice(0, 2) + ":";
+                                      return false;
+                                    }
+                                    if (intValidNum.length == 5 && intValidNum.slice(-2) == 60) {
+                                      timeInput.value = timeInput.value.slice(0, 2) + ":00:";
+                                      return false;
+                                    }
+                                  
+                                  
+                                    if (intValidNum.length == 8 && intValidNum.slice(-2) > 60) {
+                                      timeInput.value = timeInput.value.slice(0, 5) + ":";
+                                      return false;
+                                    }
+                                    if (intValidNum.length == 8 && intValidNum.slice(-2) == 60) {
+                                      timeInput.value = timeInput.value.slice(0, 5) + ":00";
+                                      return false;
+                                    }
+                                              
+                                  } //end function
+                            </script>
+
                             <div class="form-group">
                                 <div class="well">
                                     <div class="input-append">
                                         <label for="rx_time">RX Time (Mins)</label>
-                                        <input id="rx_time" name="rx_time" type="text"></input>
+                                        <input id="rx_time" name="rx_time" type="text" placeholder="HH:MM:SS" onkeypress="formatTime(this)" MaxLength="8" />
                                     </div>
                                 </div>
                             </div>
