@@ -40,7 +40,7 @@ class WodController extends Controller
         if(isset($request->box_id)) {
             $request->validate([
                 'description' => 'required|max:255',
-                'rx_time' => 'numeric|max:120',
+                'rx_time' => 'max:8',
                 'style_id' => 'required',
                 'box_id' => 'required',
             ]);
