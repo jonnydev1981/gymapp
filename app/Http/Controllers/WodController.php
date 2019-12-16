@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exercise;
 use App\Style;
 use App\Wod;
 use App\WodLine;
@@ -47,7 +48,7 @@ class WodController extends Controller
 
             $wod = Wod::create($request->all());
 
-            return view('wods.create')->with('wod',$wod)->with('success','WOD created successfully!');
+            return view('wods.create')->with('wod',$wod)->with('success','WOD created successfully!')->with('exercises', Exercise::all());
         }
 
 

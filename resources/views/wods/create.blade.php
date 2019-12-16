@@ -49,10 +49,10 @@
                                 function formatTime(timeInput) {
 
                                     intValidNum = timeInput.value;
-                                  
+
                                     if (intValidNum < 24 && intValidNum.length == 2) {
                                         timeInput.value = timeInput.value + ":";
-                                        return false;  
+                                        return false;
                                     }
                                     if (intValidNum == 24 && intValidNum.length == 2) {
                                         timeInput.value = timeInput.value.length - 2 + "0:";
@@ -62,7 +62,7 @@
                                         timeInput.value = "";
                                         return false;
                                     }
-                                  
+
                                     if (intValidNum.length == 5 && intValidNum.slice(-2) < 60) {
                                       timeInput.value = timeInput.value + ":";
                                       return false;
@@ -75,8 +75,8 @@
                                       timeInput.value = timeInput.value.slice(0, 2) + ":00:";
                                       return false;
                                     }
-                                  
-                                  
+
+
                                     if (intValidNum.length == 8 && intValidNum.slice(-2) > 60) {
                                       timeInput.value = timeInput.value.slice(0, 5) + ":";
                                       return false;
@@ -85,7 +85,7 @@
                                       timeInput.value = timeInput.value.slice(0, 5) + ":00";
                                       return false;
                                     }
-                                              
+
                                   } //end function
                             </script>
 
@@ -162,11 +162,11 @@
                             </form>
                             <script type="text/javascript">
                                 $(document).ready(function(){
-                            
+
                                     var count = 1;
-                            
+
                                     dynamic_field(count);
-                            
+
                                     function dynamic_field(number)
                                     {
                                     html = '<tr>';
@@ -174,7 +174,7 @@
                                         html += '<td><input type="text" name="rx_reps[]" class="form-control" /></td>';
                                         html += '<td><input type="text" name="rx_weight_m[]" class="form-control" /></td>';
                                         html += '<td><input type="text" name="rx_weight_f[]" class="form-control" /></td>';
-                                        html += '<td><input type="text" name="exercise_id[]" class="form-control" /></td>';
+                                        html += '<td><select id="style_id" name="exercise_id" class="custom-select"><option selected>Exercise select</option>@foreach ($exercises as $exercise)<option value="{{ $exercise->id }}">{{ $exercise->name }}</option>@endforeach</select></td>';
                                         if(number > 1)
                                         {
                                             html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
@@ -186,17 +186,17 @@
                                             $('tbody').html(html);
                                         }
                                     }
-                            
+
                                     $(document).on('click', '#add', function(){
                                     count++;
                                     dynamic_field(count);
                                     });
-                            
+
                                     $(document).on('click', '.remove', function(){
                                     count--;
                                     $(this).closest("tr").remove();
                                     });
-                            
+
                                     $('#dynamic_form').on('submit', function(event){
                                         event.preventDefault();
                                         $.ajax({
@@ -227,10 +227,10 @@
                                             }
                                         })
                                     });
-                            
+
                                 })();
                             </script>
-                            
+
                         </div>
                     @endif
 
