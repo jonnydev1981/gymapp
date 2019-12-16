@@ -137,6 +137,7 @@
                             <table class="table table-bordered table-striped" id="wodlines_table">
                                 <thead>
                                 <tr>
+                                    <th>Order</th>
                                     <th>RX Sets</th>
                                     <th>RX Reps</th>
                                     <th>RX Weight (M)</th>
@@ -170,11 +171,13 @@
                                     function dynamic_field(number)
                                     {
                                     html = '<tr>';
+                                        html += '<td><input type="text" name="order[]" class="form-control" /></td>';
                                         html += '<td><input type="text" name="rx_sets[]" class="form-control" /></td>';
                                         html += '<td><input type="text" name="rx_reps[]" class="form-control" /></td>';
                                         html += '<td><input type="text" name="rx_weight_m[]" class="form-control" /></td>';
                                         html += '<td><input type="text" name="rx_weight_f[]" class="form-control" /></td>';
-                                        html += '<td><select id="style_id" name="exercise_id" class="custom-select"><option selected>Exercise select</option>@foreach ($exercises as $exercise)<option value="{{ $exercise->id }}">{{ $exercise->name }}</option>@endforeach</select></td>';
+                                        html += '<td><select name="exercise_id[]" class="custom-select"><option selected>Exercise select</option>@foreach ($exercises as $exercise)<option value="{{ $exercise->id }}">{{ $exercise->name }}</option>@endforeach</select></td>';
+                                        html += '<input type="hidden" name="wod_id[]" class="form-control" value={{ $wod_id }}/>'
                                         if(number > 1)
                                         {
                                             html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
@@ -201,7 +204,7 @@
                                         event.preventDefault();
                                         $.ajax({
                                             method:'post',
-                                            url:'{{ route('wodline.create') }}',
+                                            url:'{{ route('wodline.store') }}',
                                             data:$(this).serialize(),
                                             dataType:'json',
                                             beforeSend:function(){
