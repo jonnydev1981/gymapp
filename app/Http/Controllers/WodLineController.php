@@ -53,12 +53,22 @@ class WodLineController extends Controller
             }
 
             /* Fix this section next - change fields to correct */
-            $first_name = $request->first_name;
-            $last_name = $request->last_name;
-            for ($count = 0; $count < count($first_name); $count++) {
+            $order = $request->order;
+            $rx_sets = $request->rx_sets;
+            $rx_reps = $request->rx_reps;
+            $rx_weight_m = $request->rx_weight_m;
+            $rx_weight_f = $request->rx_weight_f;
+            $exercise_id = $request->exercise_id;
+            $wod_id = $request->wod_id;
+            for ($count = 0; $count < count($exercise_id); $count++) {
                 $data = array(
-                    'first_name' => $first_name[$count],
-                    'last_name'  => $last_name[$count]
+                    'order' => $order[$count],
+                    'rx_sets' => $rx_sets[$count],
+                    'rx_reps' => $rx_reps[$count],
+                    'rx_weight_m' => $rx_weight_m[$count],
+                    'rx_weight_f' => $rx_weight_f[$count],
+                    'exercise_id' => $exercise_id[$count],
+                    'wod_id' => $wod_id[$count]
                 );
                 $insert_data[] = $data;
             }

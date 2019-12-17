@@ -177,7 +177,7 @@
                                         html += '<td><input type="text" name="rx_weight_m[]" class="form-control" /></td>';
                                         html += '<td><input type="text" name="rx_weight_f[]" class="form-control" /></td>';
                                         html += '<td><select name="exercise_id[]" class="custom-select"><option selected>Exercise select</option>@foreach ($exercises as $exercise)<option value="{{ $exercise->id }}">{{ $exercise->name }}</option>@endforeach</select></td>';
-                                        html += '<input type="hidden" name="wod_id[]" class="form-control" value={{ $wod_id }}/>'
+                                        html += '<input type="hidden" name="wod_id[]" class="form-control" value="{{ $wod_id }}" />'
                                         if(number > 1)
                                         {
                                             html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
