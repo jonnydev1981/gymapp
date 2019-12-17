@@ -52,6 +52,7 @@ class WodLineController extends Controller
                 ]);
             }
 
+            /* Fix this section next - change fields to correct */
             $first_name = $request->first_name;
             $last_name = $request->last_name;
             for ($count = 0; $count < count($first_name); $count++) {
