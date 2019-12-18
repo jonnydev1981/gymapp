@@ -6,7 +6,10 @@ use App\Exercise;
 use App\Style;
 use App\Wod;
 use App\WodLine;
+use App\Workout;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WodController extends Controller
 {
@@ -17,7 +20,10 @@ class WodController extends Controller
      */
     public function index()
     {
-        //
+            //dd(Workout::where('user_id', Auth::id()));
+            $userWods = Workout::where('user_id', Auth::id())->get();
+
+            return view('wods.index')->with('wods', $userWods);
     }
 
     /**

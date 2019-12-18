@@ -15,6 +15,29 @@
                     @endif
 
                     <p>List of recent WODs.</p>
+
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Style</th>
+                            <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ dd($wods) }}
+                        @foreach ($wods as $wod)
+                            <tr>
+                                <th scope="row">{{ $wod->wods->id }}</th>
+                                <td>{{ $wod->wods->description }}</td>
+                                <td>{{ $wod->wods->style->style }}</td>
+                                <td><a class="btn-sm btn-primary" href="{{ route('wodline.show', $wod->wods->id) }}">View</a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>

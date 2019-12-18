@@ -54,6 +54,10 @@
                             <a class="nav-link" href="{{ route('workout.index') }}">Workouts</a>
                         </li>
                         <li class="nav-item">
+                            <!-- <a class="nav-link" href="/profiles/{{ Auth::user()->id }}/edit">Profile</a> -->
+                            <a class="nav-link" href="{{ route('wod.index') }}">WODs</a>
+                        </li>
+                        <li class="nav-item">
                                 <!-- <a class="nav-link" href="/profiles/{{ Auth::user()->id }}/edit">Profile</a> -->
                                 <a class="nav-link" href="{{ route('wod.create') }}">Create WOD</a>
                         </li>
