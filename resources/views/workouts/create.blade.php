@@ -25,7 +25,7 @@
 
                             <div class="reveal-if-active">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="wodsearch" id="wodsearch" placeholder="WOD Description">
+                                    <select class="itemName form-control" style="width:500px;" id="itemName" name="itemName"></select>
                                 </div>
                             </div>
                         </div>
@@ -75,6 +75,32 @@ var FormStuff = {
   };
 
   FormStuff.init();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script type="text/javascript">
+
+    $('#itemName').select2({
+      placeholder: 'Select an item',
+      ajax: {
+        url: '/wod-ajax',
+        dataType: 'json',
+        delay: 250,
+        processResults: function (data) {
+          return {
+            results:  $.map(data, function (item) {
+                  return {
+                      text: item.description,
+                      id: item.id
+                  }
+              })
+          };
+        },
+        cache: true
+      }
+    });
+
+
 </script>
 
 @endsection

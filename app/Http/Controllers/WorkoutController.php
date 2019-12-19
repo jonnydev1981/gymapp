@@ -7,6 +7,7 @@ use App\Workout;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WorkoutController extends Controller
 {
@@ -87,5 +88,20 @@ class WorkoutController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dataAjax(Request $request)
+    {
+    	$data = [];
+
+        if($request->has('q')){
+            $search = $request->q;
+            $data = DB::table("wods")
+            		->select("id","description")
+            		->where('description','LIKE',"%$search%")
+            		->get();
+        }
+
+        return response()->json($data);
     }
 }
