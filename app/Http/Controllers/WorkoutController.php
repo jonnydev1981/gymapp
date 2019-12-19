@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Wod;
 use App\Workout;
 
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class WorkoutController extends Controller
      */
     public function create()
     {
-        //
+        return view('workouts.create')->with('wods', Wod::all());
     }
 
     /**
