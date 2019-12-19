@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Wod;
 use App\Workout;
-
+use App\WorkoutLine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +42,10 @@ class WorkoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$workoutLines = WorkoutLine::where('workout_id', $request->itemName);
+        $workoutLines = WorkoutLine::where('workout_id', '3');
+
+        return view('workoutlines.create')->with('workoutlines', $workoutLines);
     }
 
     /**

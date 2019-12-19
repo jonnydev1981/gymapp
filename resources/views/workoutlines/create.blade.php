@@ -15,6 +15,10 @@
                     @endif
 
                     <p>Create a workout.</p>
+
+                    @foreach ($workoutlines as $workoutline)
+                        {{ dd($workoutline) }}
+                    @endforeach
                 </div>
             </div>
         </div>

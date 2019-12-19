@@ -16,7 +16,8 @@
 
                     <p>Choose an existing WOD or manually log a workout.</p>
 
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{ route('workout.store') }}">
+                        @csrf
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="workoutradio" id="choice-wod" checked>
                             <label class="form-check-label" for="choice-wod">
