@@ -92,15 +92,13 @@ class WorkoutController extends Controller
 
     public function dataAjax(Request $request)
     {
-    	$data = [];
+        $data = [];
 
-        if($request->has('q')){
-            $search = $request->q;
-            $data = DB::table("wods")
-            		->select("id","description")
-            		->where('description','LIKE',"%$search%")
-            		->get();
-        }
+        $search = $request->q;
+        $data = DB::table("wods")
+                ->select("id","description")
+                ->where('description','LIKE',"%$search%")
+                ->get();
 
         return response()->json($data);
     }
