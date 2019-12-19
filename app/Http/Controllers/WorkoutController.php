@@ -98,6 +98,7 @@ class WorkoutController extends Controller
         $data = DB::table("wods")
                 ->select("id","description")
                 ->where('description','LIKE',"%$search%")
+                ->orderBy('description')
                 ->get();
 
         return response()->json($data);
