@@ -52,7 +52,6 @@ class WodLineController extends Controller
                 ]);
             }
 
-            /* Fix this section next - change fields to correct */
             $order = $request->order;
             $rx_sets = $request->rx_sets;
             $rx_reps = $request->rx_reps;
