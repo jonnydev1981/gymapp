@@ -14,11 +14,18 @@
                         </div>
                     @endif
 
-                    <p>Create a workout.</p>
+                    <p>Workout Log</p>
 
-                    @foreach ($workoutlines as $workoutline)
-                        {{ dd($workoutline) }}
-                    @endforeach
+                    <form method="POST" action="{{ route('workoutline.store') }}" >
+                        @csrf
+
+                        <input type="hidden" id="workout_id" name="workout_id" value="{{ $workout_id }}"
+
+                        @foreach ($workoutlines as $workoutline)
+                            {{ dd($workoutline) }}
+                        @endforeach
+
+                    </form>
                 </div>
             </div>
         </div>

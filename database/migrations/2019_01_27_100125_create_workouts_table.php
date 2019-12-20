@@ -15,8 +15,7 @@ class CreateWorkoutsTable extends Migration
     {
         Schema::create('workouts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->longtext('description')->nullable();
+            $table->longtext('description');
             $table->timestamp('performed_on');
             $table->time('time_taken')->nullable();
 

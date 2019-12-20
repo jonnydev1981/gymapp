@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Wod;
+use App\WodLine;
 use App\Workout;
 use App\WorkoutLine;
 use Illuminate\Http\Request;
@@ -42,10 +43,13 @@ class WorkoutController extends Controller
      */
     public function store(Request $request)
     {
-        //$workoutLines = WorkoutLine::where('workout_id', $request->itemName);
-        $workoutLines = WorkoutLine::where('workout_id', '3');
+        $workoutLines = WodLine::where('wod_id', $request->itemName)->get();
+        $wod = Wod::where('id', $request->itemName)->get()->toArray();
+        $workout = Workout::create($wod);
 
-        return view('workoutlines.create')->with('workoutlines', $workoutLines);
+        dd($workout);
+
+        return view('workoutlines.create')->with('workoutlines', $workoutLines)->with('workout_id', $workout->id);
     }
 
     /**
