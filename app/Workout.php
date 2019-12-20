@@ -25,6 +25,6 @@ class Workout extends Model
     }
 
     public function wod(){
-        return $this->hasOne('App\Wod');
+        return $this->belongsTo('App\Wod');
     }
 }

@@ -14,7 +14,7 @@ class Exercise extends Model
     ];
 
     public function workoutlines(){
-        return $this->belongsToMany('App\WorkoutLine');
+        return $this->hasMany('App\WorkoutLine');
     }
 
     public function wodlines(){

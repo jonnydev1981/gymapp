@@ -23,7 +23,7 @@
                     <ul class="list-group">
                         <li class="list-group-item">Description: {{ $workout->description }}</li>
                         <li class="list-group-item">RX Time: {{ $workout->wod->rx_time }}</li>
-                        <li class="list-group-item">Style: {{ $workout->wod->styles->style }}</li>
+                        <li class="list-group-item">Style: {{ $workout->wod->style->style }}</li>
                     </ul>
 
                     <form method="POST" action="{{ route('workoutline.store') }}" >
@@ -32,7 +32,7 @@
                         <input type="hidden" id="workout_id" name="workout_id" value="{{ $workout->id }}">
 
                         @foreach ($workoutlines as $workoutline)
-                            {{ dd($workoutline) }}
+
                         @endforeach
 
                     </form>

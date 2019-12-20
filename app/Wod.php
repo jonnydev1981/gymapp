@@ -20,4 +20,12 @@ class Wod extends Model
     public function wodlines(){
         return $this->hasMany('App\WodLine');
     }
+
+    public function workouts(){
+        return $this->hasMany('App\Workout');
+    }
+
+    public function style(){
+        return $this->belongsTo('App\Style');
+    }
 }
