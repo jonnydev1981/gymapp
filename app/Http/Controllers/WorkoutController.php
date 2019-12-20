@@ -6,6 +6,7 @@ use App\Wod;
 use App\WodLine;
 use App\Workout;
 use App\WorkoutLine;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -44,19 +45,15 @@ class WorkoutController extends Controller
     public function store(Request $request)
     {
         $workoutLines = WodLine::where('wod_id', $request->itemName)->get();
-        $wod = Wod::where('id', $request->itemName)->get();
-
-        //dd($wod);
+        $wod = Wod::where('id', $request->itemName)->first()->toArray();
 
         $workout = Workout::create([
-            'description' => $wod->description,
+            'description' => $wod['description'],
             'time_taken' => $request->time_taken,
-            'performed_on' => $request->performed_on,
+            'performed_on' => Carbon::createFromFormat('m/d/Y H', $request->performed_on . " 00")->toDateTimeString(),
             'user_id' => Auth::id(),
             'wod_id' => $request->itemName
             ]);
-
-        dd($workout);
 
         return view('workoutlines.create')->with('workoutlines', $workoutLines)->with('workout_id', $workout->id);
     }
