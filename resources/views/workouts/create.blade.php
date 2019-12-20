@@ -18,10 +18,18 @@
 
                     <form method="POST" action="{{ route('workout.store') }}">
                         @csrf
+
+                        <div class="form-group">
+                            <label class="form-check-label" for="performed_on">
+                                Select date workout performed
+                            </label>
+                            <input class="date form-control" type="text" name="performed_on" id="performed_on">
+                        </div>
+
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="workoutradio" id="choice-wod" checked>
                             <label class="form-check-label" for="choice-wod">
-                            Search for an existing WOD
+                                Search for an existing WOD
                             </label>
 
                             <div class="reveal-if-active">
@@ -101,6 +109,16 @@ var FormStuff = {
       }
     });
 
+
+</script>
+
+<script type="text/javascript">
+
+    $('.date').datepicker({
+
+       format: 'dd-mm-yyyy'
+
+     });
 
 </script>
 
