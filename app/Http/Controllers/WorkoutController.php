@@ -44,8 +44,17 @@ class WorkoutController extends Controller
     public function store(Request $request)
     {
         $workoutLines = WodLine::where('wod_id', $request->itemName)->get();
-        $wod = Wod::where('id', $request->itemName)->get()->toArray();
-        $workout = Workout::create($wod);
+        $wod = Wod::where('id', $request->itemName)->get();
+
+        //dd($wod);
+
+        $workout = Workout::create([
+            'description' => $wod->description,
+            'time_taken' => $request->time_taken,
+            'performed_on' => $request->performed_on,
+            'user_id' => Auth::id(),
+            'wod_id' => $request->itemName
+            ]);
 
         dd($workout);
 

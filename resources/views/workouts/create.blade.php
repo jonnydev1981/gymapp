@@ -26,6 +26,15 @@
                             <input class="date form-control" type="text" name="performed_on" id="performed_on">
                         </div>
 
+                        <div class="form-group">
+                            <div class="well">
+                                <div class="input-append">
+                                    <label for="time_taken">Time taken</label>
+                                    <input id="time_taken" name="time_taken" type="text" placeholder="HH:MM:SS" onkeypress="formatTime(this)" MaxLength="8" />
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="workoutradio" id="choice-wod" checked>
                             <label class="form-check-label" for="choice-wod">
@@ -120,6 +129,50 @@ var FormStuff = {
 
      });
 
+</script>
+
+<script>
+    function formatTime(timeInput) {
+
+        intValidNum = timeInput.value;
+
+        if (intValidNum < 24 && intValidNum.length == 2) {
+            timeInput.value = timeInput.value + ":";
+            return false;
+        }
+        if (intValidNum == 24 && intValidNum.length == 2) {
+            timeInput.value = timeInput.value.length - 2 + "0:";
+            return false;
+        }
+        if (intValidNum > 24 && intValidNum.length == 2) {
+            timeInput.value = "";
+            return false;
+        }
+
+        if (intValidNum.length == 5 && intValidNum.slice(-2) < 60) {
+          timeInput.value = timeInput.value + ":";
+          return false;
+        }
+        if (intValidNum.length == 5 && intValidNum.slice(-2) > 60) {
+          timeInput.value = timeInput.value.slice(0, 2) + ":";
+          return false;
+        }
+        if (intValidNum.length == 5 && intValidNum.slice(-2) == 60) {
+          timeInput.value = timeInput.value.slice(0, 2) + ":00:";
+          return false;
+        }
+
+
+        if (intValidNum.length == 8 && intValidNum.slice(-2) > 60) {
+          timeInput.value = timeInput.value.slice(0, 5) + ":";
+          return false;
+        }
+        if (intValidNum.length == 8 && intValidNum.slice(-2) == 60) {
+          timeInput.value = timeInput.value.slice(0, 5) + ":00";
+          return false;
+        }
+
+      } //end function
 </script>
 
 @endsection
