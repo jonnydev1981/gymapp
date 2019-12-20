@@ -55,7 +55,7 @@ class WorkoutController extends Controller
             'wod_id' => $request->itemName
             ]);
 
-        return view('workoutlines.create')->with('workoutlines', $workoutLines)->with('workout_id', $workout->id);
+        return view('workoutlines.create')->with('workoutlines', $workoutLines)->with('workout', $workout);
     }
 
     /**

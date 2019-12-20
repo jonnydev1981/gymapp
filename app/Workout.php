@@ -23,4 +23,8 @@ class Workout extends Model
     public function workoutlines(){
         return $this->hasMany('App\WorkoutLine');
     }
+
+    public function wod(){
+        return $this->hasOne('App\Wod');
+    }
 }
