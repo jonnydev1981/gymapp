@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exercise;
+use App\Workout;
 use App\WorkoutLine;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WorkoutLineController extends Controller
 {
@@ -36,7 +38,39 @@ class WorkoutLineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Check if completed
+        if ($request->rx_reps === $request->reps && $request->rx_reps === $request->reps) {
+            $completed = true;
+        } else {
+            $completed = false;
+        }
+
+        // Check if RX'ed
+        if ($request->rx_reps === $request->reps && $request->rx_reps === $request->reps) {
+            $scaled = false;
+        } else {
+            $scaled = true;
+        }
+
+        $workoutLine = new WorkoutLine();
+        $workoutLine->workout_id = $request->workout_id;
+        $workoutLine->exercise_id = $request->exercise_id;
+        $workoutLine->workout()->associate($workout);
+        $workoutLine->exercise()->associate($exercise);
+
+        WorkoutLine::create([
+            'order' => $request->order,
+            'sets' => $request->sets,
+            'reps' => $request->reps,
+            'weight' => $request->weight,
+            'scaled' => $scaled,
+            'completed' => $completed,
+            
+        ]);
+
+        $userWorkouts = Workout::where('user_id', Auth::id())->get();
+
+        return view('workouts.index')->with('success','Workout logged successfully!')->with('workouts', $userWorkouts);
     }
 
     /**
