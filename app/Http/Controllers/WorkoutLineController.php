@@ -64,8 +64,7 @@ class WorkoutLineController extends Controller
             'reps' => $request->reps,
             'weight' => $request->weight,
             'scaled' => $scaled,
-            'completed' => $completed,
-            
+            'completed' => $completed
         ]);
 
         $userWorkouts = Workout::where('user_id', Auth::id())->get();
