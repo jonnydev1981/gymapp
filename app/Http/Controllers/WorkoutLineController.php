@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exercise;
 use App\Workout;
 use App\WorkoutLine;
 
@@ -53,19 +54,15 @@ class WorkoutLineController extends Controller
         }
 
         $workoutLine = new WorkoutLine();
-        $workoutLine->workout_id = $request->workout_id;
-        $workoutLine->exercise_id = $request->exercise_id;
-        $workoutLine->workout()->associate($workout);
-        $workoutLine->exercise()->associate($exercise);
-
-        WorkoutLine::create([
-            'order' => $request->order,
-            'sets' => $request->sets,
-            'reps' => $request->reps,
-            'weight' => $request->weight,
-            'scaled' => $scaled,
-            'completed' => $completed
-        ]);
+        $workoutLine->workout()->associate(Workout::find($request->workout_id));
+        $workoutLine->exercise()->associate(Exercise::find($request->exercise_id));
+        $workoutLine->order = $request->order;
+        $workoutLine->sets = $request->sets;
+        $workoutLine->reps = $request->reps;
+        $workoutLine->weight = $request->weight;
+        $workoutLine->scaled = $scaled;
+        $workoutLine->completed = $completed;
+        $workoutLine->save();
 
         $userWorkouts = Workout::where('user_id', Auth::id())->get();
 
