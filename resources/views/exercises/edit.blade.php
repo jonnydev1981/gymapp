@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="card text-white bg-dark mb-3">
-            <div class="card-header">Dashboard</div>
+            <div class="card-header">Edit an Exercise</div>
 
             <div class="card-body">
                 @if (session('status'))
@@ -13,7 +13,7 @@
                     </div>
                 @endif
 
-                <p>Edit your workout.</p>
+                <p>Edit an exercise.</p>
             </div>
         </div>
     </div>

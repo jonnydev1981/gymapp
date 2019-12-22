@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="card text-white bg-dark mb-3">
-            <div class="card-header">Dashboard</div>
+            <div class="card-header">Workout View</div>
 
             <div class="card-body">
                 @if (session('status'))
@@ -12,8 +12,6 @@
                         {{ session('status') }}
                     </div>
                 @endif
-
-                <p>Workout View</p>
 
                 <table class="table table-dark">
                     <thead>
