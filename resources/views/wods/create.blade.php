@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="card">
-            <div class="card-header">Dashboard</div>
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-header">Create a WOD</div>
 
             <div class="card-body">
                 @if ($errors->any())
@@ -22,8 +22,6 @@
                         {{ session('status') }}
                     </div>
                 @endif
-
-                <p>Create a WOD.</p>
 
                 @if (!isset($wod))
 
