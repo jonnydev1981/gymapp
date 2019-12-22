@@ -17,7 +17,6 @@
                         <thead>
                             <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
                             <th scope="col">Description</th>
                             <th scope="col">Performed On</th>
                             <th scope="col"></th>
@@ -27,7 +26,6 @@
                         @foreach ($workouts as $workout)
                             <tr>
                                 <th scope="row">{{ $workout->id }}</th>
-                                <td>{{ $workout->name }}</td>
                                 <td>{{ $workout->description }}</td>
                                 <td>{{ $workout->performed_on }}</td>
                                 <td><a class="btn-sm btn-primary" href="{{ route('workoutline.show', $workout->id) }}">View</a></td>
