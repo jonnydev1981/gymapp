@@ -40,14 +40,14 @@ class WorkoutLineController extends Controller
     public function store(Request $request)
     {
         // Check if completed
-        if ($request->rx_reps === $request->reps && $request->rx_reps === $request->reps) {
+        if ($request->rx_reps === $request->reps && $request->rx_sets === $request->sets) {
             $completed = true;
         } else {
             $completed = false;
         }
 
         // Check if RX'ed
-        if ($request->rx_reps === $request->reps && $request->rx_reps === $request->reps) {
+        if ($request->rx_reps === $request->reps && $request->rx_sets === $request->sets) {
             $scaled = false;
         } else {
             $scaled = true;
