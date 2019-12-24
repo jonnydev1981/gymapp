@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Wod;
 use App\WodLine;
 use App\Workout;
-use App\WorkoutLine;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

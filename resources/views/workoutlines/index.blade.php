@@ -12,8 +12,7 @@
         <table class="table table-dark">
             <thead>
                 <tr>
-                <th scope="col">Order</th>
-                <th scope="col">Sets</th>
+                <th scope="col">Set #</th>
                 <th scope="col">Reps</th>
                 <th scope="col">Exercise</th>
                 <th scope="col">Weight (KG)</th>
@@ -25,7 +24,6 @@
             @foreach ($workoutlines as $workoutline)
                 <tr>
                     <th scope="row">{{ $workoutline->order }}</th>
-                    <td>{{ $workoutline->sets }}</td>
                     <td>{{ $workoutline->reps }}</td>
                     <td><a href="{{ route('exercise.show', $workoutline->exercise->id) }}">{{ $workoutline->exercise->name }}</a></td>
                     <td>{{ $workoutline->weight }}</td>
