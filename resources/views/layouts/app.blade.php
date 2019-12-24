@@ -59,6 +59,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('wod.create') }}">Create WOD</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('exercise.index') }}">Exercises</a>
+                        </li>
                     @endguest
                     </ul>
 
