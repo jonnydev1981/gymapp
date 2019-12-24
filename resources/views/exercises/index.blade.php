@@ -24,11 +24,13 @@
                     <th scope="row">{{ $exercise->name }}</th>
                     <td>{{ $exercise->description }}</td>
                     <td>{{ $exercise->url }}</td>
-                    <td></td>
+                    <td><a type="button" class="btn btn-primary" href="{{ route('exercise.edit', $exercise->id) }}">Edit</button></td>
                 </tr>
             @endforeach
             </tbody>
             </table>
+
+            {{ $exercises->links() }}
     </div>
 </div>
 @endsection
