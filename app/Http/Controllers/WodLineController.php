@@ -39,7 +39,6 @@ class WodLineController extends Controller
         if ($request->ajax()) {
             $rules = array(
                 'order.*'  => 'required',
-                'rx_sets.*'  => 'required',
                 'rx_reps.*'  => 'required',
                 'rx_weight_m.*'  => 'required',
                 'rx_weight_f.*'  => 'required',
@@ -53,7 +52,6 @@ class WodLineController extends Controller
             }
 
             $order = $request->order;
-            $rx_sets = $request->rx_sets;
             $rx_reps = $request->rx_reps;
             $rx_weight_m = $request->rx_weight_m;
             $rx_weight_f = $request->rx_weight_f;
@@ -62,7 +60,6 @@ class WodLineController extends Controller
             for ($count = 0; $count < count($exercise_id); $count++) {
                 $data = array(
                     'order' => $order[$count],
-                    'rx_sets' => $rx_sets[$count],
                     'rx_reps' => $rx_reps[$count],
                     'rx_weight_m' => $rx_weight_m[$count],
                     'rx_weight_f' => $rx_weight_f[$count],

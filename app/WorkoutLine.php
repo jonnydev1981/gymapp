@@ -8,7 +8,6 @@ class WorkoutLine extends Model
 {
     protected $fillable = [
         'order',
-        'sets',
         'reps',
         'weight',
         'scaled',

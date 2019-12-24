@@ -40,14 +40,14 @@ class WorkoutLineController extends Controller
     public function store(Request $request)
     {
         // Check if completed
-        if ($request->rx_reps === $request->reps && $request->rx_sets === $request->sets) {
+        if ($request->rx_reps === $request->reps) {
             $completed = true;
         } else {
             $completed = false;
         }
 
         // Check if RX'ed
-        if ($request->rx_reps === $request->reps && $request->rx_sets === $request->sets) {
+        if ($request->rx_reps === $request->reps) {
             $scaled = false;
         } else {
             $scaled = true;
@@ -57,7 +57,6 @@ class WorkoutLineController extends Controller
         $workoutLine->workout()->associate(Workout::find($request->workout_id));
         $workoutLine->exercise()->associate(Exercise::find($request->exercise_id));
         $workoutLine->order = $request->order;
-        $workoutLine->sets = $request->sets;
         $workoutLine->reps = $request->reps;
         $workoutLine->weight = $request->weight;
         $workoutLine->scaled = $scaled;

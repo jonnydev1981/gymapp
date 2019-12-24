@@ -8,7 +8,6 @@ class WodLine extends Model
 {
     protected $fillable = [
         'order',
-        'rx_sets',
         'rx_reps',
         'rx_weight_m',
         'rx_weight_f',
