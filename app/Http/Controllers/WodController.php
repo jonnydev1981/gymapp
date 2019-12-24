@@ -19,7 +19,6 @@ class WodController extends Controller
      */
     public function index()
     {
-            //dd(Workout::where('user_id', Auth::id()));
             $userWods = Workout::where('user_id', Auth::id())->get();
 
             return view('wods.index')->with('wods', $userWods);

@@ -15,19 +15,21 @@
             <thead>
                 <tr>
                 <th scope="col">#</th>
+                <th scope="col">Date Performed</th>
                 <th scope="col">Description</th>
                 <th scope="col">Style</th>
                 <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                {{ dd($wods) }}
+                
             @foreach ($wods as $wod)
                 <tr>
-                    <th scope="row">{{ $wod->wods->id }}</th>
-                    <td>{{ $wod->wods->description }}</td>
-                    <td>{{ $wod->wods->style->style }}</td>
-                    <td><a class="btn-sm btn-primary" href="{{ route('wodline.show', $wod->wods->id) }}">View</a></td>
+                    <th scope="row">{{ $wod->wod->id }}</th>
+                    <td>{{ $wod->performed_on }}</td>
+                    <td>{{ $wod->wod->description }}</td>
+                    <td>{{ $wod->wod->style->style }}</td>
+                    <td><a class="btn-sm btn-primary" href="{{ route('workoutline.show', $wod->id) }}">View</a></td>
                 </tr>
             @endforeach
             </tbody>
