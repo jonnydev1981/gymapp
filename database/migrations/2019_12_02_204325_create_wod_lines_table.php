@@ -17,7 +17,6 @@ class CreateWodLinesTable extends Migration
             $table->increments('id');
 
             $table->integer('order');
-            $table->integer('rx_sets');
             $table->integer('rx_reps');
             $table->integer('rx_weight_m');
             $table->integer('rx_weight_f');

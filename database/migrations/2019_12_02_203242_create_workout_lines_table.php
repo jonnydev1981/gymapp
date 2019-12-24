@@ -17,7 +17,6 @@ class CreateWorkoutLinesTable extends Migration
             $table->increments('id');
 
             $table->integer('order');
-            $table->integer('sets');
             $table->integer('reps');
             $table->integer('weight');
             $table->boolean('scaled');

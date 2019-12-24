@@ -21,16 +21,6 @@
 
         @if (!isset($wod))
 
-            {{--
-                create a wod header first, then use if to show the lines underneath
-                wods table - header
-                fields:
-                description
-                rx_time
-                style_id
-                box_id
-            --}}
-
             <form method="post" action="{{ route('wod.store') }}">
 
                 <div class="form-group">
@@ -55,7 +45,6 @@
                             timeInput.value = "";
                             return false;
                         }
-
                         if (intValidNum.length == 5 && intValidNum.slice(-2) < 60) {
                             timeInput.value = timeInput.value + ":";
                             return false;
@@ -68,8 +57,6 @@
                             timeInput.value = timeInput.value.slice(0, 2) + ":00:";
                             return false;
                         }
-
-
                         if (intValidNum.length == 8 && intValidNum.slice(-2) > 60) {
                             timeInput.value = timeInput.value.slice(0, 5) + ":";
                             return false;
@@ -111,18 +98,6 @@
 
         @else
 
-            {{--
-            wod_lines table - lines
-            fields:
-            order
-            rx_sets
-            rx_reps
-            rx_weight_m
-            rx_weight_f
-            wod_id
-            exercise_id
-        --}}
-
             <div class="table-responsive">
                 <form method="post" id="dynamic_form">
                     @csrf
@@ -130,8 +105,7 @@
                 <table class="table table-bordered table-striped" id="wodlines_table">
                     <thead>
                     <tr>
-                        <th>Order</th>
-                        <th>RX Sets</th>
+                        <th>Set #</th>
                         <th>RX Reps</th>
                         <th>RX Weight (M)</th>
                         <th>RX Weight (F)</th>
@@ -165,7 +139,6 @@
                         {
                         html = '<tr>';
                             html += '<td><input type="text" name="order[]" class="form-control" /></td>';
-                            html += '<td><input type="text" name="rx_sets[]" class="form-control" /></td>';
                             html += '<td><input type="text" name="rx_reps[]" class="form-control" /></td>';
                             html += '<td><input type="text" name="rx_weight_m[]" class="form-control" /></td>';
                             html += '<td><input type="text" name="rx_weight_f[]" class="form-control" /></td>';

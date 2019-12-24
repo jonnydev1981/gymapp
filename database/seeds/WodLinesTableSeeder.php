@@ -14,7 +14,30 @@ class WodLinesTableSeeder extends Seeder
     {
         WodLine::create([
             'order' => '1',
-            'rx_sets' => '4',
+            'rx_reps' => '8',
+            'rx_weight_m' => '40',
+            'rx_weight_f' => '30',
+            'wod_id' => '1',
+            'exercise_id' => '103'
+        ]);
+        WodLine::create([
+            'order' => '2',
+            'rx_reps' => '8',
+            'rx_weight_m' => '40',
+            'rx_weight_f' => '30',
+            'wod_id' => '1',
+            'exercise_id' => '103'
+        ]);
+        WodLine::create([
+            'order' => '3',
+            'rx_reps' => '8',
+            'rx_weight_m' => '40',
+            'rx_weight_f' => '30',
+            'wod_id' => '1',
+            'exercise_id' => '103'
+        ]);
+        WodLine::create([
+            'order' => '4',
             'rx_reps' => '8',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
@@ -23,7 +46,38 @@ class WodLinesTableSeeder extends Seeder
         ]);
         WodLine::create([
             'order' => '1',
-            'rx_sets' => '20',
+            'rx_reps' => '4',
+            'rx_weight_m' => '40',
+            'rx_weight_f' => '30',
+            'wod_id' => '2',
+            'exercise_id' => '191'
+        ]);
+        WodLine::create([
+            'order' => '2',
+            'rx_reps' => '4',
+            'rx_weight_m' => '40',
+            'rx_weight_f' => '30',
+            'wod_id' => '2',
+            'exercise_id' => '191'
+        ]);
+        WodLine::create([
+            'order' => '3',
+            'rx_reps' => '4',
+            'rx_weight_m' => '40',
+            'rx_weight_f' => '30',
+            'wod_id' => '2',
+            'exercise_id' => '191'
+        ]);
+        WodLine::create([
+            'order' => '4',
+            'rx_reps' => '4',
+            'rx_weight_m' => '40',
+            'rx_weight_f' => '30',
+            'wod_id' => '2',
+            'exercise_id' => '191'
+        ]);
+        WodLine::create([
+            'order' => '5',
             'rx_reps' => '4',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
@@ -32,7 +86,6 @@ class WodLinesTableSeeder extends Seeder
         ]);
         WodLine::create([
             'order' => '1',
-            'rx_sets' => '1',
             'rx_reps' => '21',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
@@ -41,7 +94,6 @@ class WodLinesTableSeeder extends Seeder
         ]);
         WodLine::create([
             'order' => '2',
-            'rx_sets' => '1',
             'rx_reps' => '15',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
@@ -50,7 +102,6 @@ class WodLinesTableSeeder extends Seeder
         ]);
         WodLine::create([
             'order' => '3',
-            'rx_sets' => '9',
             'rx_reps' => '8',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
