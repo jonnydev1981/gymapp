@@ -61,7 +61,7 @@ class ExerciseController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view ('exercises.edit')->with('exercise', Exercise::find($id));
     }
 
     /**
@@ -72,8 +72,15 @@ class ExerciseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {        
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'nullable',
+            'url' => 'url',
+        ]);
+        Exercise::whereId($id)->update($validatedData);
+
+        return redirect('/exercise')->with('status', 'Exercise successfully updated');
     }
 
     /**
