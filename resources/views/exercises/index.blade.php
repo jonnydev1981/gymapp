@@ -2,34 +2,6 @@
 
 @section('content')
 
-<script>
-    $(document).ready(function() {
-
-        // Gets the video src from the data-src on each button
-        
-        var $videoSrc;  
-        $('.video-btn').click(function() {
-            $videoSrc = $(this).data( "src" );
-        });
-        console.log($videoSrc);
-          
-        // when the modal is opened autoplay it  
-        $('#myModal').on('shown.bs.modal', function (e) {
-            
-        // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
-        $("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" ); 
-        })
-        
-        // stop playing the youtube video when I close the modal
-        $('#myModal').on('hide.bs.modal', function (e) {
-            // a poor man's stop video
-            $("#video").attr('src',$videoSrc); 
-        }) 
-
-        // document ready  
-        });            
-</script>
-
 <div class="container">
     <div class="row justify-content-center">
         @if (session('status'))
@@ -60,11 +32,11 @@
                     
                     <td>
                         @isset($exercise->url)
-                            <button type="button" class="btn btn-primary video-btn" data-toggle="modal" data-src="{{ $exercise->url }}" data-target="#myModal">
+                            <button type="button" class="btn btn-primary video-btn{{ $exercise->id }}" data-toggle="modal" data-src="{{ $exercise->url }}" data-target="#myModal{{ $exercise->id }}">
                                 Play
                             </button>
 
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="myModal{{ $exercise->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -78,7 +50,34 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
+                            <script>
+                                $(document).ready(function() {
+                            
+                                    // Gets the video src from the data-src on each button
+                                    
+                                    var $videoSrc;  
+                                    $('.video-btn{{ $exercise->id }}').click(function() {
+                                        $videoSrc = $(this).data( "src" );
+                                    });
+                                    console.log($videoSrc);
+                                      
+                                    // when the modal is opened autoplay it  
+                                    $('#myModal{{ $exercise->id }}').on('shown.bs.modal', function (e) {
+                                        
+                                    // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
+                                    $("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" ); 
+                                    })
+                                    
+                                    // stop playing the youtube video when I close the modal
+                                    $('#myModal{{ $exercise->id }}').on('hide.bs.modal', function (e) {
+                                        // a poor man's stop video
+                                        $("#video").attr('src',$videoSrc); 
+                                    }) 
+                            
+                                    // document ready  
+                                    });            
+                            </script>
                             &nbsp;
                             <a href="{{ $exercise->url }}">{{ $exercise->url }}</a>
                         @endisset
