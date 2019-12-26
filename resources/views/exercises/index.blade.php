@@ -42,7 +42,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">
-                                            <iframe width="560" height="315" id="exerciseVideo{{ $exercise->id }}" src="{{ $exercise->url }}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe width="560" height="315" id="exerciseVideo{{ $exercise->id }}" src="https://www.youtube.com/embed/{{ $exercise->url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                 });
                             </script>
                             &nbsp;
-                            <a href="{{ $exercise->url }}">{{ $exercise->url }}</a>
+                            <a href="https://www.youtube.com/watch/{{ $exercise->url }}">https://www.youtube.com/watch/{{ $exercise->url }}</a>
                         @endisset
                     </td>
 

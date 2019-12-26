@@ -76,7 +76,7 @@ class ExerciseController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'description' => 'nullable',
-            'url' => 'url',
+            'url' => 'nullable',
         ]);
         Exercise::whereId($id)->update($validatedData);
 

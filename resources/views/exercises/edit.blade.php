@@ -24,8 +24,8 @@
             </div>
 
             <div class="form-group">
-                <label for="url">URL</label>
-                <input type="url" class="form-control" id="url" name="url" size="50" value="{{ $exercise->url }}">
+                <label for="url">Youtube Video ID</label>
+                <input type="text" class="form-control" id="url" name="url" size="50" value="{{ $exercise->url }}">
             </div>
 
             <button class="btn btn-primary" type="submit">Update</button>
