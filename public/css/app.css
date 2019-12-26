@@ -12246,24 +12246,12 @@ input[type=checkbox]:checked ~ .reveal-if-active {
   overflow: visible;
 }
 
-.modal-dialog {
-  max-width: 800px;
-  margin: 30px auto;
+.bs-example {
+  margin: 20px;
 }
 
-.modal-body {
-  position: relative;
-  padding: 0px;
-}
-
-.close {
-  position: absolute;
-  right: -30px;
-  top: 0;
-  z-index: 999;
-  font-size: 2rem;
-  font-weight: normal;
-  color: #fff;
-  opacity: 1;
+.modal-content iframe {
+  margin: 0 auto;
+  display: block;
 }
 

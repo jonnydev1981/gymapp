@@ -32,51 +32,40 @@
                     
                     <td>
                         @isset($exercise->url)
-                            <button type="button" class="btn btn-primary video-btn{{ $exercise->id }}" data-toggle="modal" data-src="{{ $exercise->url }}" data-target="#myModal{{ $exercise->id }}">
-                                Play
-                            </button>
-
-                            <div class="modal fade" id="myModal{{ $exercise->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
+                            <a href="#myModal{{ $exercise->id }}" class="btn btn-primary" data-toggle="modal">Play</a>
+                            
+                            <div id="myModal{{ $exercise->id }}" class="modal fade">
+                                <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">{{ $exercise->name }} Video</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        </div>
                                         <div class="modal-body">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>        
-                                            
-                                            <div class="embed-responsive embed-responsive-16by9">
-                                                <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
-                                            </div>
+                                            <iframe width="560" height="315" id="exerciseVideo{{ $exercise->id }}" src="{{ $exercise->url }}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                                
                             <script>
-                                $(document).ready(function() {
-                            
-                                    // Gets the video src from the data-src on each button
+                                $(document).ready(function(){
+                                    /* Get iframe src attribute value i.e. YouTube video url
+                                    and store it in a variable */
+                                    var url = $("#exerciseVideo{{ $exercise->id }}").attr('src');
                                     
-                                    var $videoSrc;  
-                                    $('.video-btn{{ $exercise->id }}').click(function() {
-                                        $videoSrc = $(this).data( "src" );
+                                    /* Assign empty url value to the iframe src attribute when
+                                    modal hide, which stop the video playing */
+                                    $("#myModal{{ $exercise->id }}").on('hide.bs.modal', function(){
+                                        $("#exerciseVideo{{ $exercise->id }}").attr('src', '');
                                     });
-                                    console.log($videoSrc);
-                                      
-                                    // when the modal is opened autoplay it  
-                                    $('#myModal{{ $exercise->id }}').on('shown.bs.modal', function (e) {
-                                        
-                                    // set the video src to autoplay and not to show related video. Youtube related video is like a box of chocolates... you never know what you're gonna get
-                                    $("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" ); 
-                                    })
                                     
-                                    // stop playing the youtube video when I close the modal
-                                    $('#myModal{{ $exercise->id }}').on('hide.bs.modal', function (e) {
-                                        // a poor man's stop video
-                                        $("#video").attr('src',$videoSrc); 
-                                    }) 
-                            
-                                    // document ready  
-                                    });            
+                                    /* Assign the initially stored url back to the iframe src
+                                    attribute when modal is displayed again */
+                                    $("#myModal{{ $exercise->id }}").on('show.bs.modal', function(){
+                                        $("#exerciseVideo{{ $exercise->id }}").attr('src', url);
+                                    });
+                                });
                             </script>
                             &nbsp;
                             <a href="{{ $exercise->url }}">{{ $exercise->url }}</a>
