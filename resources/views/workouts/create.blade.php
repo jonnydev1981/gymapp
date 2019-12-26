@@ -4,13 +4,15 @@
 <div class="container">
     <div class="row justify-content-center">
       @if (session('status'))
-          <div class="alert alert-success" role="alert">
-              {{ session('status') }}
-          </div>
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
       @endif
 
-      <p>Choose an existing WOD or manually log a workout.</p>
-
+      <h5>Choose an existing WOD or manually log a workout.</h5>
+    </div>
+    
+    <div class="row justify-content-center">
       <form method="POST" action="{{ route('workout.store') }}">
           @csrf
 
@@ -53,6 +55,7 @@
           <input type="submit" name="continue" id="continue" class="btn btn-primary" value="Continue" />
 
       </form>
+      </div>
     </div>
 </div>
 
