@@ -24,7 +24,7 @@
             </div>
 
             <div class="form-group">
-                <label for="url">Youtube Video ID</label>
+                <label for="url">YouTube Video ID</label>
                 <input type="text" class="form-control" id="url" name="url" size="50" value="{{ $exercise->url }}">
             </div>
 

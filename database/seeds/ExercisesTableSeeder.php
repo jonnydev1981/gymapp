@@ -12,8 +12,8 @@ class ExercisesTableSeeder extends Seeder
      */
     public function run()
     {
-        Exercise::insert([ 'name' => 'ab crunch machine']);
-        Exercise::insert([ 'name' => 'ab roller']);
+        Exercise::insert([ 'name' => 'ab crunch machine', 'url' => 'F-hrStkNNH0' ]);
+        Exercise::insert([ 'name' => 'ab roller', 'url' => 'VmqDIL2xzbk' ]);
         Exercise::insert([ 'name' => 'adductor']);
         Exercise::insert([ 'name' => 'adductor/groin']);
         Exercise::insert([ 'name' => 'advanced kettlebell windmill']);
