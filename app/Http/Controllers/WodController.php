@@ -19,7 +19,7 @@ class WodController extends Controller
      */
     public function index()
     {
-            $userWods = Workout::where('user_id', Auth::id())->get();
+            $userWods = Workout::where('user_id', Auth::id())->simplePaginate(10);
 
             return view('wods.index')->with('wods', $userWods);
     }

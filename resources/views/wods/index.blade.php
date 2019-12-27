@@ -34,6 +34,8 @@
             @endforeach
             </tbody>
         </table>
+
+        {{ $wods->links() }}
     </div>
 </div>
 @endsection

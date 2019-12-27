@@ -34,6 +34,8 @@
                 @endforeach
                 </tbody>
             </table>
+
+            {{ $workouts->links() }}
         </div>
     </div>
 </div>
