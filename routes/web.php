@@ -26,3 +26,5 @@ Route::resource('wodline','WodLineController');
 Route::resource('exercise','ExerciseController');
 
 Route::get('wod-ajax', 'WorkoutController@dataAjax');
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
