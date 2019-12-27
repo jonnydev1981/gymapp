@@ -9,7 +9,10 @@
             </div>
         @endif
 
-        <p>List of recent WODs.</p>
+        <h5>List of recently performed WODs</h5>
+    </div>
+
+    <div class="row justify-content-center">
 
         <table class="table table-dark">
             <thead>

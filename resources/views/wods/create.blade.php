@@ -19,6 +19,11 @@
             </div>
         @endif
 
+        <h5>Create a WOD</h5>
+    
+    </div>
+    <div class="row justify-content-center">
+
         @if (!isset($wod))
 
             <form method="post" action="{{ route('wod.store') }}">
