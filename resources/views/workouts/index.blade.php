@@ -10,6 +10,10 @@
             </div>
         @endif
 
+            <h5>List of Logged Workouts</h5>
+        </div>
+
+        <div class="row">
             <table class="table table-dark">
                 <thead>
                     <tr>
@@ -30,7 +34,7 @@
                 @endforeach
                 </tbody>
             </table>
-        </form>
+        </div>
     </div>
 </div>
 @endsection
