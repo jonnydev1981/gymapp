@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,4 +24,4 @@ Route::resource('statistic','StatisticController');
 
 Route::get('wod-ajax', 'WorkoutController@dataAjax');
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/', 'DashboardController@index')->name('dashboard');
