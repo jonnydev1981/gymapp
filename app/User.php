@@ -35,4 +35,8 @@ class User extends Authenticatable
     public function workouts(){
         return $this->hasMany('App\Workout');
     }
+
+    public function statistics(){
+        return $this->hasMany('App\Statistic');
+    }
 }

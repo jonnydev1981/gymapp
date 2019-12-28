@@ -20,4 +20,8 @@ class Exercise extends Model
     public function wodlines(){
         return $this->hasMany('App\WodLine');
     }
+
+    public function statistics(){
+        return $this->hasMany('App\Statistic');
+    }
 }

@@ -24,6 +24,7 @@ Route::resource('workoutline','WorkoutLineController');
 Route::resource('wod','WodController');
 Route::resource('wodline','WodLineController');
 Route::resource('exercise','ExerciseController');
+Route::resource('statistic','StatisticController');
 
 Route::get('wod-ajax', 'WorkoutController@dataAjax');
 

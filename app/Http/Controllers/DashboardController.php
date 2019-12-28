@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Statistic;
 use App\Workout;
 use App\WorkoutLine;
 use Illuminate\Http\Request;
@@ -10,16 +11,21 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index() {
+        $distanceStats = Statistic::where('user_id', Auth::id())
+        ->where('metric', 'distance')
+        ->get();
 
-        $userWorkouts = Workout::where('user_id', Auth::id())->get();
+        $timeStats = Statistic::where('user_id', Auth::id())
+        ->where('metric', 'time')
+        ->get();
 
-        // Find all workoutlines for currently logged in user
-        foreach ($userWorkouts as $userWorkout) {
-            $workoutLines[] = WorkoutLine::where('workout_id', $userWorkout->id)->get()->toArray();
-        }
+        $weightStats = Statistic::where('user_id', Auth::id())
+        ->where('metric', 'weight')
+        ->get();
 
-        // Using Bryzycki formula for 1RM
-
-        return view ('dashboards.index');
+        return view ('dashboards.index')
+        ->with('distancestats', $distanceStats)
+        ->with('timestats', $timeStats)
+        ->with('weightstats', $weightStats);
     }
 }
