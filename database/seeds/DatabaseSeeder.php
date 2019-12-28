@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(WodLinesTableSeeder::class);
         $this->call(WorkoutsTableSeeder::class);
         $this->call(WorkoutLinesTableSeeder::class);
+        $this->call(StatisticsTableSeeder::class);
     }
 }
