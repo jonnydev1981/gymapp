@@ -9,18 +9,22 @@
             </div>
         @endif
 
-        <p>Workout Log</p>
+        <h5>Workout Log</h5>
+    </div>
+    <div class="row justify-content-center">
 
-        <p>
-            WOD Details
-        </p>
+        <h5>WOD Details</h5>
+    </div>
 
+    <div class="row justify-content-center">
         <ul class="list-group">
             <li class="list-group-item">Description: {{ $workout->description }}</li>
             <li class="list-group-item">RX Time: {{ $workout->wod->rx_time }}</li>
             <li class="list-group-item">Style: {{ $workout->wod->style->style }}</li>
         </ul>
+    </div>
 
+    <div class="row justify-content-center">
         <form method="POST" action="{{ route('workoutline.store') }}" >
             @csrf
 
@@ -29,10 +33,8 @@
             <table class="table table-dark">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">RX Sets</th>
+                    <th scope="col">Set #</th>
                     <th scope="col">RX Reps</th>
-                    <th scope="col">Sets Performed</th>
                     <th scope="col">Reps Performed</th>
                     <th scope="col">RX Weight (Male)</th>
                     <th scope="col">RX Weight (Female)</th>
@@ -45,9 +47,7 @@
                     @foreach ($workout->wod->wodlines as $wodline)
                         <tr>
                             <th scope="row"><input type="hidden" name="order" id="order" value="{{$wodline->order }}">{{ $wodline->order }}</th>
-                            <td>{{ $wodline->rx_sets }}</td>
                             <td>{{ $wodline->rx_reps }}</td>
-                            <td><input type="number" name="sets" id="sets"></td>
                             <td><input type="number" name="reps" id="reps"></td>
                             <td>{{ $wodline->rx_weight_m }}</td>
                             <td>{{ $wodline->rx_weight_f }}</td>
