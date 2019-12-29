@@ -8,20 +8,21 @@
                 {{ session('status') }}
             </div>
         @endif
-
-        <h5>Workout Log</h5>
-    </div>
-    <div class="row justify-content-center">
-
-        <h5>WOD Details</h5>
     </div>
 
-    <div class="row justify-content-center">
-        <ul class="list-group">
-            <li class="list-group-item">Description: {{ $workout->description }}</li>
-            <li class="list-group-item">RX Time: {{ $workout->wod->rx_time }}</li>
-            <li class="list-group-item">Style: {{ $workout->wod->style->style }}</li>
-        </ul>
+    <div class="row">
+        <div class="card" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">WOD Details</h5>
+              <p class="card-text">
+                <ul class="list-group">
+                    <li class="list-group-item">Description: {{ $workout->description }}</li>
+                    <li class="list-group-item">RX Time: {{ $workout->wod->rx_time }}</li>
+                    <li class="list-group-item">Style: {{ $workout->wod->style->style }}</li>
+                </ul>
+              </p>
+            </div>
+        </div>
     </div>
 
     <div class="row justify-content-center">
@@ -35,10 +36,10 @@
                     <tr>
                     <th scope="col">Set #</th>
                     <th scope="col">RX Reps</th>
-                    <th scope="col">Reps Performed</th>
+                    <th scope="col">Reps</th>
                     <th scope="col">RX Weight (Male)</th>
                     <th scope="col">RX Weight (Female)</th>
-                    <th scope="col">Weight Performed</th>
+                    <th scope="col">Weight (KG)</th>
                     <th scope="col">Exercise</th>
                     </tr>
                 </thead>
@@ -48,10 +49,10 @@
                         <tr>
                             <th scope="row"><input type="hidden" name="order" id="order" value="{{$wodline->order }}">{{ $wodline->order }}</th>
                             <td>{{ $wodline->rx_reps }}</td>
-                            <td><input type="number" name="reps" id="reps"></td>
+                            <td><input type="number" name="reps" id="reps" maxlength="3" size="3"></td>
                             <td>{{ $wodline->rx_weight_m }}</td>
                             <td>{{ $wodline->rx_weight_f }}</td>
-                            <td><input type="number" name="weight" id="weight"></td>
+                            <td><input type="number" name="weight" id="weight" maxlength="6" size="6"></td>
                             <td><input type="hidden" name="exercise_id" id="exercise_id" value="{{ $wodline->exercise->id }}">{{ $wodline->exercise->name }}</td>
                         </tr>
                     @endforeach
