@@ -28,6 +28,7 @@ Route::group(['middleware' => 'App\Http\Middleware\Authenticate'], function()
 // Box owner only routes
 Route::group(['middleware' => 'App\Http\Middleware\BoxMiddleware'], function()
 {
+    Route::get('/', 'DashboardController@boxindex')->name('boxdashboard');
     Route::resource('wod','WodController');
     Route::resource('wodline','WodLineController');
     Route::resource('exercise','ExerciseController');

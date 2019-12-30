@@ -44,33 +44,41 @@
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
                     @else
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('dashboard') }}">Dashboard <span class="sr-only">(current)</span></a>
-                        </li>
+                        @if (Auth::user()->permission === "user")
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('dashboard') }}">Dashboard <span class="sr-only">(current)</span></a>
+                            </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Workouts
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="{{ route('workout.create') }}">Log a Workout</a>
-                              <a class="dropdown-item" href="{{ route('workout.index') }}">List Workouts</a>
-                            </div>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Workouts
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('workout.create') }}">Log a Workout</a>
+                                <a class="dropdown-item" href="{{ route('workout.index') }}">List Workouts</a>
+                                </div>
+                            </li>
+                        @endif
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              WODs
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="{{ route('wod.create') }}">Create a WOD</a>
-                              <a class="dropdown-item" href="{{ route('wod.index') }}">List WODs</a>
-                            </div>
-                        </li>
+                        @if (Auth::user()->permission === "box")
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('boxdashboard') }}">Box Dashboard <span class="sr-only">(current)</span></a>
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                WODs
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('wod.create') }}">Create a WOD</a>
+                                <a class="dropdown-item" href="{{ route('wod.index') }}">List WODs</a>
+                                </div>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('exercise.index') }}">Exercises</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('exercise.index') }}">Exercises</a>
+                            </li>
+                        @endif
                     @endguest
                     </ul>
 
