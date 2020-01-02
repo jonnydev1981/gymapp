@@ -17,6 +17,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '8',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'weight',
             'wod_id' => '1',
             'exercise_id' => '103'
         ]);
@@ -25,6 +26,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '8',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'weight',
             'wod_id' => '1',
             'exercise_id' => '103'
         ]);
@@ -33,6 +35,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '8',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'weight',
             'wod_id' => '1',
             'exercise_id' => '103'
         ]);
@@ -41,6 +44,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '8',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'weight',
             'wod_id' => '1',
             'exercise_id' => '103'
         ]);
@@ -49,6 +53,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '4',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'time',
             'wod_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -57,6 +62,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '4',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'time',
             'wod_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -65,6 +71,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '4',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'time',
             'wod_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -73,6 +80,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '4',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'time',
             'wod_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -81,6 +89,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '4',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'time',
             'wod_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -89,6 +98,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '21',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'time',
             'wod_id' => '3',
             'exercise_id' => '311'
         ]);
@@ -105,6 +115,7 @@ class WodLinesTableSeeder extends Seeder
             'rx_reps' => '8',
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
+            'metric' => 'time',
             'wod_id' => '3',
             'exercise_id' => '311'
         ]);

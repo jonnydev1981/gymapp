@@ -21,6 +21,7 @@ class CreateWorkoutLinesTable extends Migration
             $table->integer('weight');
             $table->boolean('scaled');
             $table->boolean('completed');
+            $table->enum('metric', ['time', 'weight', 'reps', 'distance']);
 
             $table->integer('workout_id')->unsigned();
             $table->foreign('workout_id')->references('id')->on('workouts');

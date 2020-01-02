@@ -12,17 +12,14 @@ class StylesTableSeeder extends Seeder
      */
     public function run()
     {
-        Style::create([ // create a new staff user
-            'style' => 'Weightlifting',
-            'metric' => 'weight'
+        Style::create([
+            'style' => 'Weightlifting'
         ]);
-        Style::create([ // create a new staff user
-            'style' => 'EMOM',
-            'metric' => 'time'
+        Style::create([
+            'style' => 'EMOM'
         ]);
-        Style::create([ // create a new staff user
-            'style' => 'Ladder',
-            'metric' => 'time'
+        Style::create([
+            'style' => 'Ladder'
         ]);
     }
 }

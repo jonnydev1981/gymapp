@@ -18,6 +18,10 @@ class CreateExercisesTable extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->string('url', 255)->nullable();
+
+            $table->integer('exercise_group_id')->unsigned()->nullable();
+            $table->foreign('exercise_group_id')->references('id')->on('exercise_groups');
+
             $table->timestamps();
         });
     }

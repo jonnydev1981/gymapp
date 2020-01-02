@@ -24,4 +24,8 @@ class Exercise extends Model
     public function statistics(){
         return $this->hasMany('App\Statistic');
     }
+
+    public function exercisegroup(){
+        return $this->belongsTo('App\ExerciseGroup');
+    }
 }
