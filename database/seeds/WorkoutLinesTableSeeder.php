@@ -18,6 +18,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '40',
             'scaled' => false,
             'completed' => true,
+            'metric' => 'weight',
             'workout_id' => '1',
             'exercise_id' => '103'
         ]);
@@ -27,6 +28,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '40',
             'scaled' => false,
             'completed' => true,
+            'metric' => 'weight',
             'workout_id' => '1',
             'exercise_id' => '103'
         ]);
@@ -36,6 +38,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '40',
             'scaled' => false,
             'completed' => true,
+            'metric' => 'weight',
             'workout_id' => '1',
             'exercise_id' => '103'
         ]);
@@ -45,6 +48,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '40',
             'scaled' => false,
             'completed' => true,
+            'metric' => 'weight',
             'workout_id' => '1',
             'exercise_id' => '103'
         ]);
@@ -54,6 +58,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '30',
             'scaled' => true,
             'completed' => true,
+            'metric' => 'time',
             'workout_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -63,6 +68,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '30',
             'scaled' => true,
             'completed' => true,
+            'metric' => 'time',
             'workout_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -72,6 +78,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '30',
             'scaled' => true,
             'completed' => true,
+            'metric' => 'time',
             'workout_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -81,6 +88,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '30',
             'scaled' => true,
             'completed' => true,
+            'metric' => 'time',
             'workout_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -90,6 +98,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '30',
             'scaled' => true,
             'completed' => true,
+            'metric' => 'time',
             'workout_id' => '2',
             'exercise_id' => '191'
         ]);
@@ -99,6 +108,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '40',
             'scaled' => false,
             'completed' => true,
+            'metric' => 'time',
             'workout_id' => '3',
             'exercise_id' => '311'
         ]);
@@ -108,6 +118,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '40',
             'scaled' => false,
             'completed' => true,
+            'metric' => 'time',
             'workout_id' => '3',
             'exercise_id' => '311'
         ]);
@@ -117,6 +128,7 @@ class WorkoutLinesTableSeeder extends Seeder
             'weight' => '40',
             'scaled' => false,
             'completed' => false,
+            'metric' => 'time',
             'workout_id' => '3',
             'exercise_id' => '311'
         ]);
