@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('index');
 
 // Logged in users only
 Route::group(['middleware' => 'App\Http\Middleware\Authenticate'], function()
@@ -22,13 +23,13 @@ Route::group(['middleware' => 'App\Http\Middleware\Authenticate'], function()
     Route::resource('workoutline','WorkoutLineController');
     Route::resource('statistic','StatisticController');
     Route::get('wod-ajax', 'WorkoutController@dataAjax');
-    Route::get('/', 'DashboardController@index')->name('dashboard');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });
 
 // Box owner only routes
 Route::group(['middleware' => 'App\Http\Middleware\BoxMiddleware'], function()
 {
-    Route::get('/', 'DashboardController@boxindex')->name('boxdashboard');
+    Route::get('/boxdashboard', 'DashboardController@boxindex')->name('boxdashboard');
     Route::resource('wod','WodController');
     Route::resource('wodline','WodLineController');
     Route::resource('exercise','ExerciseController');
