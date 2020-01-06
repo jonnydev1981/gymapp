@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        
+
         @if (session('status'))
             <div class="alert alert-success" role="alert">
                 {{ session('status') }}
@@ -35,7 +35,9 @@
                 </tbody>
             </table>
 
-            {{ $workouts->links() }}
+            @isset($workouts->links)
+                {{ $workouts->links() }}
+            @endisset
         </div>
     </div>
 </div>
