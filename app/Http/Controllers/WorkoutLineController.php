@@ -39,29 +39,39 @@ class WorkoutLineController extends Controller
      */
     public function store(Request $request)
     {
-        // Check if completed
-        if ($request->rx_reps === $request->reps) {
-            $completed = true;
-        } else {
-            $completed = false;
+        //dd($request->all());
+
+        foreach ($request->except(['_token', 'save']) as $workoutLineRow ) {
+
+            dd($workoutLineRow);
+
+            // Check if completed
+            if ($request->rx_reps === $request->reps) {
+                $completed = true;
+            } else {
+                $completed = false;
+            }
+
+            // Check if RX'ed
+            if ($request->rx_reps === $request->reps) {
+                $scaled = false;
+            } else {
+                $scaled = true;
+            }
+
+            $workoutLine = new WorkoutLine();
+            $workoutLine->workout()->associate(Workout::find($request->workout_id));
+            $workoutLine->exercise()->associate(Exercise::find($request->exercise_id));
+            $workoutLine->order = $request->order;
+            $workoutLine->reps = $request->reps;
+            $workoutLine->weight = $request->weight;
+            $workoutLine->scaled = $scaled;
+            $workoutLine->completed = $completed;
+            $workoutLine->save();
+
         }
 
-        // Check if RX'ed
-        if ($request->rx_reps === $request->reps) {
-            $scaled = false;
-        } else {
-            $scaled = true;
-        }
-
-        $workoutLine = new WorkoutLine();
-        $workoutLine->workout()->associate(Workout::find($request->workout_id));
-        $workoutLine->exercise()->associate(Exercise::find($request->exercise_id));
-        $workoutLine->order = $request->order;
-        $workoutLine->reps = $request->reps;
-        $workoutLine->weight = $request->weight;
-        $workoutLine->scaled = $scaled;
-        $workoutLine->completed = $completed;
-        $workoutLine->save();
+        
 
         $userWorkouts = Workout::where('user_id', Auth::id())->get();
 

@@ -29,8 +29,6 @@
         <form method="POST" action="{{ route('workoutline.store') }}" >
             @csrf
 
-            <input type="hidden" id="workout_id" name="workout_id" value="{{ $workout->id }}">
-
             <table class="table table-dark">
                 <thead>
                     <tr>
@@ -47,13 +45,31 @@
 
                     @foreach ($workout->wod->wodlines as $wodline)
                         <tr>
-                            <th scope="row"><input type="hidden" name="order" id="order" value="{{$wodline->order }}">{{ $wodline->order }}</th>
-                            <td>{{ $wodline->rx_reps }}</td>
-                            <td><input type="number" name="reps" id="reps" maxlength="3" size="3"></td>
-                            <td>{{ $wodline->rx_weight_m }}</td>
-                            <td>{{ $wodline->rx_weight_f }}</td>
-                            <td><input type="number" name="weight" id="weight" maxlength="6" size="6"></td>
-                            <td><input type="hidden" name="exercise_id" id="exercise_id" value="{{ $wodline->exercise->id }}">{{ $wodline->exercise->name }}</td>
+                            <th scope="row">
+                                <input type="hidden" name="workout_id[]" value="{{ $workout->id }}">
+                                <input type="hidden" name="order[]" value="{{$wodline->order }}">{{ $wodline->order }}
+                            </th>
+                            <td>
+                                <input type="hidden" name="rx_reps[]" value="{{$wodline->rx_reps }}">{{ $wodline->rx_reps }}
+                            </td>
+                            <td>
+                                <input type="number" name="reps[]" maxlength="3" size="3">
+                            </td>
+                            <td>
+                                <input type="hidden" name="rx_weight_m[]" value="{{$wodline->rx_weight_m }}">
+                                {{ $wodline->rx_weight_m }}
+                            </td>
+                            <td>
+                                <input type="hidden" name="rx_weight_f[]" value="{{$wodline->rx_weight_f }}">
+                                {{ $wodline->rx_weight_f }}
+                            </td>
+                            <td>
+                                <input type="number" name="weight[]" maxlength="6" size="6">
+                            </td>
+                            <td>
+                                <input type="hidden" name="exercise_id[]" value="{{ $wodline->exercise->id }}">
+                                {{ $wodline->exercise->name }}
+                            </td>
                         </tr>
                     @endforeach
 
