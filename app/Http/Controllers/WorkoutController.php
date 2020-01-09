@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exercise;
 use App\Wod;
 use App\WodLine;
 use App\Workout;
@@ -42,7 +43,12 @@ class WorkoutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {    
+        $request->validate([
+            'performed_on' => 'required',
+            'time_taken' => 'required|max:8',
+        ]);
+
         $workoutLines = WodLine::where('wod_id', $request->itemName)->get();
         $wod = Wod::where('id', $request->itemName)->first()->toArray();
 
@@ -54,7 +60,7 @@ class WorkoutController extends Controller
             'wod_id' => $request->itemName
             ]);
 
-        return view('workoutlines.create')->with('workoutlines', $workoutLines)->with('workout', $workout);
+        return view('workouts.create')->with('workout',$workout)->with('workoutlines', $workoutLines)->with('success','Workout created successfully!');
     }
 
     /**

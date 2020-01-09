@@ -52,9 +52,8 @@ class WodController extends Controller
 
             $wod = Wod::create($request->all());
 
-            return view('wods.create')->with('wod',$wod)->with('success','WOD created successfully!')->with('exercises', Exercise::all())->with('wod_id', $wod->id);
+            return view('wods.create')->with('wod',$wod)->with('success','WOD created successfully!')->with('exercises', Exercise::all());
         }
-
     }
 
     /**
