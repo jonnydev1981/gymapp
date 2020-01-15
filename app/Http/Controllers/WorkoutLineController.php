@@ -75,7 +75,7 @@ class WorkoutLineController extends Controller
             $workoutLine->save();
         }
 
-        $userWorkouts = Workout::where('user_id', Auth::id())->get();
+        $userWorkouts = Workout::where('user_id', Auth::id())->simplePaginate(10);
 
         return view('workouts.index')->with('success','Workout logged successfully!')->with('workouts', $userWorkouts);
     }
