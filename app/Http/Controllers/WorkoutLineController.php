@@ -40,37 +40,39 @@ class WorkoutLineController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        dd($request->except(['_token', 'save']));
+        $order = $request->order;
+        $reps = $request->reps;
+        $rx_reps = $request->rx_reps;
+        $weight = $request->weight;
+        $workout_id = $request->workout_id;
+        $exercise_id = $request->exercise_id;
 
-        foreach ($request->except(['_token', 'save']) as $workoutLineRow ) {
+        //dd($order);
 
-            dd($workoutLineRow);
-
+        foreach ($order as $key => $no) {
             // Check if completed
-            if ($request->rx_reps === $request->reps) {
+            if ($reps[$key] === $rx_reps[$key]) {
                 $completed = true;
             } else {
                 $completed = false;
             }
 
             // Check if RX'ed
-            if ($request->rx_reps === $request->reps) {
+            if ($reps[$key] === $rx_reps[$key]) {
                 $scaled = false;
             } else {
                 $scaled = true;
             }
 
             $workoutLine = new WorkoutLine();
-            $workoutLine->workout()->associate(Workout::find($request->workout_id));
-            $workoutLine->exercise()->associate(Exercise::find($request->exercise_id));
-            $workoutLine->order = $request->order;
-            $workoutLine->reps = $request->reps;
-            $workoutLine->weight = $request->weight;
+            $workoutLine->workout()->associate(Workout::find($workout_id[$key]));
+            $workoutLine->exercise()->associate(Exercise::find($exercise_id[$key]));
+            $workoutLine->order = $no;
+            $workoutLine->reps = $reps[$key];
+            $workoutLine->weight = $weight[$key];
             $workoutLine->scaled = $scaled;
             $workoutLine->completed = $completed;
             $workoutLine->save();
-
         }
 
         $userWorkouts = Workout::where('user_id', Auth::id())->get();
