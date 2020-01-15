@@ -26,8 +26,8 @@
     <div class="row justify-content-center">
       
     @if (!isset($workout))
-        <form method="POST" action="{{ route('workout.store') }}">
-            @csrf
+    @csrf
+            <form method="POST" action="{{ route('workout.store') }}">
 
             <div class="form-group">
                 <label class="form-check-label" for="performed_on">
@@ -155,7 +155,6 @@
               timeInput.value = "";
               return false;
           }
-
           if (intValidNum.length == 5 && intValidNum.slice(-2) < 60) {
             timeInput.value = timeInput.value + ":";
             return false;
@@ -168,8 +167,6 @@
             timeInput.value = timeInput.value.slice(0, 2) + ":00:";
             return false;
           }
-
-
           if (intValidNum.length == 8 && intValidNum.slice(-2) > 60) {
             timeInput.value = timeInput.value.slice(0, 5) + ":";
             return false;
@@ -185,7 +182,7 @@
 @else
 
     <div class="table-responsive">
-        <form method="post" id="dynamic_form">
+        <form method="POST" action="{{ route('workoutline.store') }}">
             @csrf
         <span id="result"></span>
         <table class="table table-bordered table-striped" id="workoutlines_table">
@@ -202,12 +199,39 @@
             </thead>
 
             <tbody>
-
+                @foreach ($workout->wod->wodlines as $wodline)
+                    <tr>
+                        <th scope="row">
+                            <input type="hidden" name="workout_id[]" value="{{ $workout->id }}">
+                            <input type="hidden" name="order[]" value="{{$wodline->order }}">{{ $wodline->order }}
+                        </th>
+                        <td>
+                            <input type="hidden" name="rx_reps[]" value="{{$wodline->rx_reps }}">{{ $wodline->rx_reps }}
+                        </td>
+                        <td>
+                            <input type="number" name="reps[]" maxlength="3" size="3">
+                        </td>
+                        <td>
+                            <input type="hidden" name="rx_weight_m[]" value="{{$wodline->rx_weight_m }}">
+                            {{ $wodline->rx_weight_m }}
+                        </td>
+                        <td>
+                            <input type="hidden" name="rx_weight_f[]" value="{{$wodline->rx_weight_f }}">
+                            {{ $wodline->rx_weight_f }}
+                        </td>
+                        <td>
+                            <input type="number" name="weight[]" maxlength="6" size="6">
+                        </td>
+                        <td>
+                            <input type="hidden" name="exercise_id[]" value="{{ $wodline->exercise->id }}">
+                            {{ $wodline->exercise->name }}
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="2" align="right">&nbsp;</td>
-                    <td>
+                    <td colspan="7" align="right">
                         @csrf
                         <input type="submit" name="save" id="save" class="btn btn-primary" value="Save" />
                     </td>
@@ -215,78 +239,6 @@
             </tfoot>
         </table>
         </form>
-        <script type="text/javascript">
-            $(document).ready(function(){
-
-                var count = 1;
-
-                dynamic_field(count);
-
-                function dynamic_field(number)
-                {
-                    html = '<tr>';
-                    html += '<td><input type="text" name="order[]" class="form-control" /></td>';
-                    html += '<td><input type="text" name="rx_reps[]" class="form-control" /></td>';
-                    html += '<td><input type="text" name="rx_weight_m[]" class="form-control" /></td>';
-                    html += '<td><input type="text" name="rx_weight_f[]" class="form-control" /></td>';
-                    html += '<td><select name="exercise_id[]" class="custom-select"><option selected>Exercise select</option>@foreach ($exercises as $exercise)<option value="{{ $exercise->id }}">{{ $exercise->name }}</option>@endforeach</select></td>';
-                    html += '<input type="hidden" name="wod_id[]" class="form-control" value="{{ $wod_id }}" />'
-                    if(number > 1)
-                    {
-                        html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
-                        $('tbody').append(html);
-                    }
-                    else
-                    {
-                        html += '<td><button type="button" name="add" id="add" class="btn btn-success">Add</button></td></tr>';
-                        $('tbody').html(html);
-                    }
-                }
-
-                $(document).on('click', '#add', function(){
-                count++;
-                dynamic_field(count);
-                });
-
-                $(document).on('click', '.remove', function(){
-                count--;
-                $(this).closest("tr").remove();
-                });
-
-                $('#dynamic_form').on('submit', function(event){
-                    event.preventDefault();
-                    $.ajax({
-                        method:'post',
-                        url:'{{ route('workoutline.store') }}',
-                        data:$(this).serialize(),
-                        dataType:'json',
-                        beforeSend:function(){
-                            $('#save').attr('disabled','disabled');
-                        },
-                        success:function(data)
-                        {
-                            if(data.error)
-                            {
-                                var error_html = '';
-                                for(var count = 0; count < data.error.length; count++)
-                                {
-                                    error_html += '<p>'+data.error[count]+'</p>';
-                                }
-                                $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
-                            }
-                            else
-                            {
-                                dynamic_field(1);
-                                $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
-                            }
-                            $('#save').attr('disabled', false);
-                        }
-                    })
-                });
-
-            })();
-        </script>
-
     </div>
 @endif
 

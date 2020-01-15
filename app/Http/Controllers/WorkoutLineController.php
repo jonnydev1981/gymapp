@@ -8,6 +8,7 @@ use App\WorkoutLine;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WorkoutLineController extends Controller
 {
@@ -40,6 +41,7 @@ class WorkoutLineController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        dd($request->except(['_token', 'save']));
 
         foreach ($request->except(['_token', 'save']) as $workoutLineRow ) {
 
@@ -70,8 +72,6 @@ class WorkoutLineController extends Controller
             $workoutLine->save();
 
         }
-
-        
 
         $userWorkouts = Workout::where('user_id', Auth::id())->get();
 
