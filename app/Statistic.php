@@ -23,7 +23,7 @@ class Statistic extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function onerepmax($repetitions, $weight)
+    public function scopeOneRepMax($repetitions, $weight)
     {
         return $weight * (($repetitions / 30) + 1);
     }

@@ -78,9 +78,13 @@ class WorkoutLineController extends Controller
             $workoutLine->metric = $metric[$key];
             $workoutLine->save();
 
+            // Test code
+            dd(Statistic::OneRepMax($reps[$key], $weight[$key]));
+
             if ($metric[$key] === "weight") {
                 // Check if exercise record exists
                 if (Statistic::where('exercise_id', $exercise_id[$key])->doesntExist()) {
+                        dd('Adding new 1RM');
                         $oneRepMax = new Statistic();
                         $oneRepMax->weight = Statistic::onerepmax($reps[$key], $weight[$key]);
                         $oneRepMax->metric = "weight";
