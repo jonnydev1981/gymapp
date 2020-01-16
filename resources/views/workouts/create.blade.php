@@ -24,10 +24,10 @@
     </div>
 
     <div class="row justify-content-center">
-      
+
     @if (!isset($workout))
-    @csrf
             <form method="POST" action="{{ route('workout.store') }}">
+                @csrf
 
             <div class="form-group">
                 <label class="form-check-label" for="performed_on">
@@ -232,7 +232,6 @@
             <tfoot>
                 <tr>
                     <td colspan="7" align="right">
-                        @csrf
                         <input type="submit" name="save" id="save" class="btn btn-primary" value="Save" />
                     </td>
                 </tr>
