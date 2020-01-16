@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exercise;
+use App\Statistic;
+use App\User;
 use App\Workout;
 use App\WorkoutLine;
 
@@ -46,6 +48,7 @@ class WorkoutLineController extends Controller
         $weight = $request->weight;
         $workout_id = $request->workout_id;
         $exercise_id = $request->exercise_id;
+        $metric = $request->metric;
 
         //dd($order);
 
@@ -72,7 +75,25 @@ class WorkoutLineController extends Controller
             $workoutLine->weight = $weight[$key];
             $workoutLine->scaled = $scaled;
             $workoutLine->completed = $completed;
+            $workoutLine->metric = $metric[$key];
             $workoutLine->save();
+
+            if ($metric[$key] === "weight") {
+                // Check if exercise record exists
+                if (Statistic::where('exercise_id', $exercise_id[$key])->doesntExist()) {
+                        $oneRepMax = new Statistic();
+                        $oneRepMax->weight = Statistic::onerepmax($reps[$key], $weight[$key]);
+                        $oneRepMax->metric = "weight";
+                        $oneRepMax->exercise()->associate(Exercise::find($exercise_id[$key]));
+                        $oneRepMax->user()->associate(User::find(Auth::id()));
+                } else {
+                    // Check if 1RM and update statistics table
+                    if (Statistic::where('exercise_id', $exercise_id[$key])->weight < Statistic::onerepmax($reps[$key], $weight[$key])) {
+                        $oneRepMax = Statistic::where('exercise_id', $exercise_id[$key]);
+                        $oneRepMax->weight = Statistic::onerepmax($reps[$key], $weight[$key]);
+                    }
+                }
+            }
         }
 
         $userWorkouts = Workout::where('user_id', Auth::id())->simplePaginate(10);

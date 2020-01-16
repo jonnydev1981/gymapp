@@ -203,6 +203,7 @@
                     <tr>
                         <th scope="row">
                             <input type="hidden" name="workout_id[]" value="{{ $workout->id }}">
+                            <input type="hidden" name="metric[]" value="{{ $wodline->metric }}">
                             <input type="hidden" name="order[]" value="{{$wodline->order }}">{{ $wodline->order }}
                         </th>
                         <td>
