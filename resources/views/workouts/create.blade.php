@@ -191,8 +191,7 @@
                     <th scope="col">Set #</th>
                     <th scope="col">RX Reps</th>
                     <th scope="col">Reps</th>
-                    <th scope="col">RX Weight (Male)</th>
-                    <th scope="col">RX Weight (Female)</th>
+                    <th scope="col">RX Weight</th>
                     <th scope="col">Weight (KG)</th>
                     <th scope="col">Exercise</th>
                 </tr>
@@ -212,14 +211,19 @@
                         <td>
                             <input type="number" name="reps[]" maxlength="3" size="3">
                         </td>
-                        <td>
-                            <input type="hidden" name="rx_weight_m[]" value="{{$wodline->rx_weight_m }}">
-                            {{ $wodline->rx_weight_m }}
-                        </td>
-                        <td>
-                            <input type="hidden" name="rx_weight_f[]" value="{{$wodline->rx_weight_f }}">
-                            {{ $wodline->rx_weight_f }}
-                        </td>
+
+                        @if ($user = Auth::user()->gender === "male")
+                            <td>
+                                <input type="hidden" name="rx_weight[]" value="{{$wodline->rx_weight_m }}">
+                                {{ $wodline->rx_weight_m }}
+                            </td>
+                        @else
+                            <td>
+                                <input type="hidden" name="rx_weight[]" value="{{$wodline->rx_weight_f }}">
+                                {{ $wodline->rx_weight_f }}
+                            </td>    
+                        @endif
+                        
                         <td>
                             <input type="number" name="weight[]" maxlength="6" size="6">
                         </td>

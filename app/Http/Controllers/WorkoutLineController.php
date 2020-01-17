@@ -46,20 +46,21 @@ class WorkoutLineController extends Controller
         $reps = $request->reps;
         $rx_reps = $request->rx_reps;
         $weight = $request->weight;
+        $rx_weight = $request->rx_weight;
         $workout_id = $request->workout_id;
         $exercise_id = $request->exercise_id;
         $metric = $request->metric;
 
         foreach ($order as $key => $no) {
             // Check if completed
-            if ($reps[$key] === $rx_reps[$key]) {
+            if ($reps[$key] === $rx_reps[$key] && $weight[$key] === $rx_weight[$key]) {
                 $completed = true;
             } else {
                 $completed = false;
             }
 
             // Check if RX'ed
-            if ($reps[$key] === $rx_reps[$key]) {
+            if ($weight[$key] === $rx_weight[$key]) {
                 $scaled = false;
             } else {
                 $scaled = true;
@@ -83,13 +84,14 @@ class WorkoutLineController extends Controller
                 $oneRepValue = +number_format($this->OneRepMax($workoutLine->reps, $workoutLine->weight),2);
 
                 // Check if exercise record exists
-                if (Statistic::where('exercise_id', $exercise_id[$key])->doesntExist()) {
+                if (Statistic::where('exercise_id', $exercise_id[$key])->where('user_id', Auth::id())->doesntExist()) {
                         // 1RM Doesn't exist, create new
                         $oneRepMax = new Statistic();
                         $oneRepMax->weight = $oneRepValue;
                         $oneRepMax->metric = "weight";
                         $oneRepMax->exercise()->associate(Exercise::find($exercise_id[$key]));
                         $oneRepMax->user()->associate(User::find(Auth::id()));
+                        $oneRepMax->save();
                 } else {
                     // Find existing 1RM record
                     $oneRepMax = Statistic::where('exercise_id', $exercise_id[$key])
