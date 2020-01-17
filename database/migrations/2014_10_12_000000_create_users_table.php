@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
 
             $table->enum('permission', ['user', 'box', 'admin']);
+            $table->enum('gender', ['male', 'female']);
 
             $table->integer('box_id')->unsigned();
             $table->foreign('box_id')->references('id')->on('boxes');

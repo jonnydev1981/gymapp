@@ -17,14 +17,16 @@ class UsersTableSeeder extends Seeder
             'email' => 'vandammit091281@gmail.com',
             'password' => Hash::make('password'),
             'box_id' => '1',
-            'permission' => 'user'
+            'permission' => 'user',
+            'gender' => 'male'
         ]);
         User::create([ // create a new box owner
             'name' => 'Box Owner',
             'email' => 'boxowner@test.com',
             'password' => Hash::make('password'),
             'box_id' => '1',
-            'permission' => 'box'
+            'permission' => 'box',
+            'gender' => 'male'
         ]);
     }
 }
