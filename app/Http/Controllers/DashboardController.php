@@ -33,6 +33,7 @@ class DashboardController extends Controller
 
     public function boxindex() {
         $boxMembers = User::where('box_id', Auth::user()->box_id)
+        ->where('permission', 'user')
         ->get();
 
         $boxWODs = Wod::where('box_id', Auth::user()->box_id)
