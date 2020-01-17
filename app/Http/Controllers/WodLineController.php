@@ -43,6 +43,7 @@ class WodLineController extends Controller
                 'rx_weight_m.*'  => 'required',
                 'rx_weight_f.*'  => 'required',
                 'exercise_id.*'  => 'required',
+                'metric.*' => 'required',
             );
             $error = Validator::make($request->all(), $rules);
             if ($error->fails()) {
@@ -56,6 +57,7 @@ class WodLineController extends Controller
             $rx_weight_m = $request->rx_weight_m;
             $rx_weight_f = $request->rx_weight_f;
             $exercise_id = $request->exercise_id;
+            $metric = $request->metric;
             $wod_id = $request->wod_id;
             for ($count = 0; $count < count($exercise_id); $count++) {
                 $data = array(
@@ -64,6 +66,7 @@ class WodLineController extends Controller
                     'rx_weight_m' => $rx_weight_m[$count],
                     'rx_weight_f' => $rx_weight_f[$count],
                     'exercise_id' => $exercise_id[$count],
+                    'metric' => $metric[$count],
                     'wod_id' => $wod_id[$count]
                 );
                 $insert_data[] = $data;
@@ -84,7 +87,11 @@ class WodLineController extends Controller
      */
     public function show($id)
     {
-        //
+        $wodLines = WodLine::where('wod_id', $id)->get();
+        //$userExerciseLines = Exercise::where()->get();
+
+        return view('wodlines.index')
+            ->with('wodlines', $wodLines);
     }
 
     /**
