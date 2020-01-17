@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Statistic;
+use App\User;
+use App\Wod;
 use App\Workout;
 use App\WorkoutLine;
 use Illuminate\Http\Request;
@@ -30,21 +32,14 @@ class DashboardController extends Controller
     }
 
     public function boxindex() {
-        $distanceStats = Statistic::where('user_id', Auth::id())
-        ->where('metric', 'distance')
+        $boxMembers = User::where('box_id', Auth::user()->box_id)
         ->get();
 
-        $timeStats = Statistic::where('user_id', Auth::id())
-        ->where('metric', 'time')
-        ->get();
-
-        $weightStats = Statistic::where('user_id', Auth::id())
-        ->where('metric', 'weight')
+        $boxWODs = Wod::where('box_id', Auth::user()->box_id)
         ->get();
 
         return view ('dashboards.boxindex')
-        ->with('distancestats', $distanceStats)
-        ->with('timestats', $timeStats)
-        ->with('weightstats', $weightStats);
+        ->with('members', $boxMembers)
+        ->with('wods', $boxWODs);
     }
 }

@@ -13,23 +13,22 @@
     </div>
 
     <div class="row justify-content-center">
-        @isset($distancestats)
-        <div class="card" style="width: 22rem;">
+        <div class="card" style="width: 32rem;">
             <div class="card-body">
-              <h5 class="card-title">Distance</h5>
+              <h5 class="card-title">Members</h5>
               <div class="card-text">
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">Exercise</th>
-                        <th scope="col">Distance (KM)</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach ($distancestats as $distancestat)
+                    @foreach ($members as $member)
                         <tr>
-                            <th scope="row">{{ $distancestat->exercise->name }}</th>
-                            <td>{{ $distancestat->distance }}</td>
+                            <th scope="row">{{ $member->name }}</th>
+                            <td>{{ $member->email }}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -38,25 +37,23 @@
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
-        @endisset
 
-        @isset($timestats)
-        <div class="card" style="width: 22rem;">
+        <div class="card" style="width: 32rem;">
             <div class="card-body">
-                <h5 class="card-title">Time</h5>
+                <h5 class="card-title">WODs</h5>
                 <div class="card-text">
                     <table class="table">
                         <thead>
                             <tr>
-                            <th scope="col">Exercise</th>
-                            <th scope="col">Time (Seconds)</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Style</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($timestats as $timestat)
+                        @foreach ($wods as $wod)
                             <tr>
-                                <th scope="row">{{ $timestat->exercise->name }}</th>
-                                <td>{{ $timestat->time }}</td>
+                                <th scope="row">{{ $wod->description }}</th>
+                                <td>{{ $wod->style->style }}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -65,34 +62,6 @@
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
-        @endisset
-
-        @isset($weightstats)
-        <div class="card" style="width: 22rem;">
-            <div class="card-body">
-                <h5 class="card-title">Weight 1RM</h5>
-                <div class="card-text">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col">Exercise</th>
-                            <th scope="col">Weight (KG)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($weightstats as $weightstat)
-                            <tr>
-                                <th scope="row">{{ $weightstat->exercise->name }}</th>
-                                <td>{{ $weightstat->weight }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        @endisset
 
     </div>
 </div>
