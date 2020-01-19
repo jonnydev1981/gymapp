@@ -21,4 +21,8 @@ class WorkoutLine extends Model
     public function exercise(){
         return $this->belongsTo('App\Exercise');
     }
+
+    public function metric(){
+        return $this->belongsTo('App\Metric');
+    }
 }

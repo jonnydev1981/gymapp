@@ -22,4 +22,8 @@ class Statistic extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public function metric(){
+        return $this->belongsTo('App\Metric');
+    }
 }
