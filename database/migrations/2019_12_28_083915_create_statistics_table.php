@@ -20,7 +20,8 @@ class CreateStatisticsTable extends Migration
             $table->integer('time')->nullable();
             $table->float('weight', 8, 2)->nullable();
 
-            $table->enum('metric', ['time', 'weight', 'reps', 'distance']);
+            $table->integer('metric_id')->unsigned();
+            $table->foreign('metric_id')->references('id')->on('metrics');
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

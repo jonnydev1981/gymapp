@@ -14,19 +14,19 @@ class StatisticsTableSeeder extends Seeder
     {
         Statistic::create([
             'weight' => '49.65',
-            'metric' => 'weight',
+            'metric_id' => '4',
             'user_id' => '1',
             'exercise_id' => '103'
         ]);
         Statistic::create([
             'weight' => '32.73',
-            'metric' => 'weight',
+            'metric_id' => '4',
             'user_id' => '1',
             'exercise_id' => '191'
         ]);
         Statistic::create([
             'weight' => '90.00',
-            'metric' => 'weight',
+            'metric_id' => '4',
             'user_id' => '1',
             'exercise_id' => '311'
         ]);

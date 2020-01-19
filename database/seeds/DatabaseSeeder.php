@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BoxesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(StylesTableSeeder::class);
+        $this->call(MetricsTableSeeder::class);
         $this->call(MeasurementsTableSeeder::class);
         $this->call(WodsTableSeeder::class);
         $this->call(WodLinesTableSeeder::class);

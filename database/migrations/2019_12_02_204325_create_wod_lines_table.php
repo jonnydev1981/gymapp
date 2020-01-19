@@ -20,7 +20,9 @@ class CreateWodLinesTable extends Migration
             $table->integer('rx_reps');
             $table->integer('rx_weight_m');
             $table->integer('rx_weight_f');
-            $table->enum('metric', ['time', 'weight', 'reps', 'distance']);
+            
+            $table->integer('metric_id')->unsigned();
+            $table->foreign('metric_id')->references('id')->on('metrics');
 
             $table->integer('wod_id')->unsigned();
             $table->foreign('wod_id')->references('id')->on('wods');
