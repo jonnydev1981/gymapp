@@ -20,7 +20,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'weight',
             'workout_id' => '1',
-            'exercise_id' => '103'
+            'exercise_id' => '103',
+            'measurement_id' => '1',
         ]);
         WorkoutLine::create([
             'order' => '2',
@@ -30,7 +31,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'weight',
             'workout_id' => '1',
-            'exercise_id' => '103'
+            'exercise_id' => '103',
+            'measurement_id' => '1',
         ]);
         WorkoutLine::create([
             'order' => '3',
@@ -40,7 +42,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'weight',
             'workout_id' => '1',
-            'exercise_id' => '103'
+            'exercise_id' => '103',
+            'measurement_id' => '1',
         ]);
         WorkoutLine::create([
             'order' => '4',
@@ -50,7 +53,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'weight',
             'workout_id' => '1',
-            'exercise_id' => '103'
+            'exercise_id' => '103',
+            'measurement_id' => '1',
         ]);
         WorkoutLine::create([
             'order' => '1',
@@ -60,7 +64,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'time',
             'workout_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WorkoutLine::create([
             'order' => '2',
@@ -70,7 +75,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'time',
             'workout_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WorkoutLine::create([
             'order' => '3',
@@ -80,7 +86,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'time',
             'workout_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WorkoutLine::create([
             'order' => '4',
@@ -90,7 +97,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'time',
             'workout_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WorkoutLine::create([
             'order' => '5',
@@ -100,7 +108,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'time',
             'workout_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WorkoutLine::create([
             'order' => '1',
@@ -110,7 +119,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'time',
             'workout_id' => '3',
-            'exercise_id' => '311'
+            'exercise_id' => '311',
+            'measurement_id' => '4',
         ]);
         WorkoutLine::create([
             'order' => '2',
@@ -120,7 +130,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => true,
             'metric' => 'time',
             'workout_id' => '3',
-            'exercise_id' => '311'
+            'exercise_id' => '311',
+            'measurement_id' => '4',
         ]);
         WorkoutLine::create([
             'order' => '3',
@@ -130,7 +141,8 @@ class WorkoutLinesTableSeeder extends Seeder
             'completed' => false,
             'metric' => 'time',
             'workout_id' => '3',
-            'exercise_id' => '311'
+            'exercise_id' => '311',
+            'measurement_id' => '4',
         ]);
     }
 }

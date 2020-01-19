@@ -84,7 +84,10 @@ class WorkoutLineController extends Controller
                 $oneRepValue = +number_format($this->OneRepMax($workoutLine->reps, $workoutLine->weight),2);
 
                 // Check if exercise record exists
-                if (Statistic::where('exercise_id', $exercise_id[$key])->where('user_id', Auth::id())->doesntExist()) {
+                if (Statistic::where('exercise_id', $exercise_id[$key])
+                    ->where('user_id', Auth::id())
+                    ->whereNotNull('weight')
+                    ->doesntExist()) {
                         // 1RM Doesn't exist, create new
                         $oneRepMax = new Statistic();
                         $oneRepMax->weight = $oneRepValue;
@@ -101,6 +104,35 @@ class WorkoutLineController extends Controller
                     // Check if 1RM and update statistics table
                     if ($oneRepMax->weight < $oneRepValue) {
                         $oneRepMax->weight = $oneRepValue;
+                        $oneRepMax->save();
+                    }
+                }
+            }
+
+            // Check metric is distance
+            if ($workoutLine->metric === "distance") {
+                // Check if exercise record exists
+                if (Statistic::where('exercise_id', $exercise_id[$key])
+                    ->where('user_id', Auth::id())
+                    ->whereNotNull('distance')
+                    ->doesntExist()) {
+                        // 1RM Doesn't exist, create new
+                        $oneRepMax = new Statistic();
+                        $oneRepMax->distance = $oneRepValue;
+                        $oneRepMax->metric = "distance";
+                        $oneRepMax->exercise()->associate(Exercise::find($exercise_id[$key]));
+                        $oneRepMax->user()->associate(User::find(Auth::id()));
+                        $oneRepMax->save();
+                } else {
+                    // Find existing 1RM record
+                    $oneRepMax = Statistic::where('exercise_id', $exercise_id[$key])
+                            ->where('user_id', Auth::id())
+                            ->whereNotNull('distance')
+                            ->first();
+
+                    // Check if 1RM and update statistics table
+                    if ($oneRepMax->distance < $oneRepValue) {
+                        $oneRepMax->distance = $oneRepValue;
                         $oneRepMax->save();
                     }
                 }

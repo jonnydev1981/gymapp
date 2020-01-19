@@ -29,6 +29,9 @@ class CreateWorkoutLinesTable extends Migration
             $table->integer('exercise_id')->unsigned();
             $table->foreign('exercise_id')->references('id')->on('exercises');
 
+            $table->integer('measurement_id')->unsigned();
+            $table->foreign('measurement_id')->references('id')->on('measurements');
+
             $table->timestamps();
         });
     }

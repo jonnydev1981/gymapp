@@ -19,7 +19,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'weight',
             'wod_id' => '1',
-            'exercise_id' => '103'
+            'exercise_id' => '103',
+            'measurement_id' => '1',
         ]);
         WodLine::create([
             'order' => '2',
@@ -28,7 +29,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'weight',
             'wod_id' => '1',
-            'exercise_id' => '103'
+            'exercise_id' => '103',
+            'measurement_id' => '1',
         ]);
         WodLine::create([
             'order' => '3',
@@ -37,7 +39,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'weight',
             'wod_id' => '1',
-            'exercise_id' => '103'
+            'exercise_id' => '103',
+            'measurement_id' => '1',
         ]);
         WodLine::create([
             'order' => '4',
@@ -46,7 +49,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'weight',
             'wod_id' => '1',
-            'exercise_id' => '103'
+            'exercise_id' => '103',
+            'measurement_id' => '1',
         ]);
         WodLine::create([
             'order' => '1',
@@ -55,7 +59,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'time',
             'wod_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WodLine::create([
             'order' => '2',
@@ -64,7 +69,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'time',
             'wod_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WodLine::create([
             'order' => '3',
@@ -73,7 +79,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'time',
             'wod_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WodLine::create([
             'order' => '4',
@@ -82,7 +89,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'time',
             'wod_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WodLine::create([
             'order' => '5',
@@ -91,7 +99,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'time',
             'wod_id' => '2',
-            'exercise_id' => '191'
+            'exercise_id' => '191',
+            'measurement_id' => '4',
         ]);
         WodLine::create([
             'order' => '1',
@@ -100,7 +109,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'time',
             'wod_id' => '3',
-            'exercise_id' => '311'
+            'exercise_id' => '311',
+            'measurement_id' => '4',
         ]);
         WodLine::create([
             'order' => '2',
@@ -108,7 +118,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_m' => '40',
             'rx_weight_f' => '30',
             'wod_id' => '3',
-            'exercise_id' => '311'
+            'exercise_id' => '311',
+            'measurement_id' => '4',
         ]);
         WodLine::create([
             'order' => '3',
@@ -117,7 +128,8 @@ class WodLinesTableSeeder extends Seeder
             'rx_weight_f' => '30',
             'metric' => 'time',
             'wod_id' => '3',
-            'exercise_id' => '311'
+            'exercise_id' => '311',
+            'measurement_id' => '4',
         ]);
     }
 }
