@@ -13,6 +13,8 @@ class WodLine extends Model
         'rx_weight_f',
         'exercise_id',
         'wod_id',
+        'metric_id',
+        'exercise_id',
     ];
 
     public function wod(){

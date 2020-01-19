@@ -43,7 +43,7 @@ class WodLineController extends Controller
                 'rx_weight_m.*'  => 'required',
                 'rx_weight_f.*'  => 'required',
                 'exercise_id.*'  => 'required',
-                'metric.*' => 'required',
+                'metric_id.*' => 'required',
             );
             $error = Validator::make($request->all(), $rules);
             if ($error->fails()) {
@@ -57,7 +57,7 @@ class WodLineController extends Controller
             $rx_weight_m = $request->rx_weight_m;
             $rx_weight_f = $request->rx_weight_f;
             $exercise_id = $request->exercise_id;
-            $metric = $request->metric;
+            $metric_id = $request->metric_id;
             $wod_id = $request->wod_id;
             for ($count = 0; $count < count($exercise_id); $count++) {
                 $data = array(
@@ -66,7 +66,7 @@ class WodLineController extends Controller
                     'rx_weight_m' => $rx_weight_m[$count],
                     'rx_weight_f' => $rx_weight_f[$count],
                     'exercise_id' => $exercise_id[$count],
-                    'metric' => $metric[$count],
+                    'metric_id' => $metric_id[$count],
                     'wod_id' => $wod_id[$count]
                 );
                 $insert_data[] = $data;

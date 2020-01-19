@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exercise;
+use App\Metric;
 use App\Statistic;
 use App\User;
 use App\Workout;
@@ -49,7 +50,7 @@ class WorkoutLineController extends Controller
         $rx_weight = $request->rx_weight;
         $workout_id = $request->workout_id;
         $exercise_id = $request->exercise_id;
-        $metric = $request->metric;
+        $metric_id = $request->metric_id;
 
         foreach ($order as $key => $no) {
             // Check if completed
@@ -70,16 +71,16 @@ class WorkoutLineController extends Controller
             $workoutLine = new WorkoutLine();
             $workoutLine->workout()->associate(Workout::find($workout_id[$key]));
             $workoutLine->exercise()->associate(Exercise::find($exercise_id[$key]));
+            $workoutLine->metric()->associate(Metric::find($metric_id[$key]));
             $workoutLine->order = $no;
             $workoutLine->reps = $reps[$key];
             $workoutLine->weight = $weight[$key];
             $workoutLine->scaled = $scaled;
             $workoutLine->completed = $completed;
-            $workoutLine->metric = $metric[$key];
             $workoutLine->save();
 
             // Check metric is weight
-            if ($workoutLine->metric === "weight") {
+            if ($workoutLine->metric->name === "weight") {
                 // Calculate 1RM
                 $oneRepValue = +number_format($this->OneRepMax($workoutLine->reps, $workoutLine->weight),2);
 
@@ -91,7 +92,7 @@ class WorkoutLineController extends Controller
                         // 1RM Doesn't exist, create new
                         $oneRepMax = new Statistic();
                         $oneRepMax->weight = $oneRepValue;
-                        $oneRepMax->metric = "weight";
+                        $oneRepMax->metric()->associate(Metric::find($metric_id[$key]));
                         $oneRepMax->exercise()->associate(Exercise::find($exercise_id[$key]));
                         $oneRepMax->user()->associate(User::find(Auth::id()));
                         $oneRepMax->save();
@@ -110,7 +111,7 @@ class WorkoutLineController extends Controller
             }
 
             // Check metric is distance
-            if ($workoutLine->metric === "distance") {
+            if ($workoutLine->metric->name === "distance") {
                 // Check if exercise record exists
                 if (Statistic::where('exercise_id', $exercise_id[$key])
                     ->where('user_id', Auth::id())
@@ -119,7 +120,7 @@ class WorkoutLineController extends Controller
                         // 1RM Doesn't exist, create new
                         $oneRepMax = new Statistic();
                         $oneRepMax->distance = $oneRepValue;
-                        $oneRepMax->metric = "distance";
+                        $oneRepMax->metric()->associate(Metric::find($metric_id[$key]));
                         $oneRepMax->exercise()->associate(Exercise::find($exercise_id[$key]));
                         $oneRepMax->user()->associate(User::find(Auth::id()));
                         $oneRepMax->save();

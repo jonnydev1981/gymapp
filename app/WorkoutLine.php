@@ -12,6 +12,9 @@ class WorkoutLine extends Model
         'weight',
         'scaled',
         'completed',
+        'metric_id',
+        'workout_id',
+        'user_id',
     ];
 
     public function workout(){
