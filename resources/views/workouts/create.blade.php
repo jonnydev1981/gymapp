@@ -193,6 +193,7 @@
                     <th scope="col">Reps</th>
                     <th scope="col">RX Weight</th>
                     <th scope="col">Weight (KG)</th>
+                    <th scope="col">Metric</th>
                     <th scope="col">Exercise</th>
                 </tr>
             </thead>
@@ -202,7 +203,6 @@
                     <tr>
                         <th scope="row">
                             <input type="hidden" name="workout_id[]" value="{{ $workout->id }}">
-                            <input type="hidden" name="metric[]" value="{{ $wodline->metric }}">
                             <input type="hidden" name="order[]" value="{{$wodline->order }}">{{ $wodline->order }}
                         </th>
                         <td>
@@ -226,6 +226,10 @@
                         
                         <td>
                             <input type="number" name="weight[]" maxlength="6" size="6">
+                        </td>
+                        <td>
+                            <input type="hidden" name="metric_id[]" value="{{ $wodline->metric->id }}">
+                            {{ $wodline->metric->name }}
                         </td>
                         <td>
                             <input type="hidden" name="exercise_id[]" value="{{ $wodline->exercise->id }}">

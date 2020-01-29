@@ -150,7 +150,7 @@
                             html += '<td><input type="text" name="rx_weight_m[]" class="form-control" /></td>';
                             html += '<td><input type="text" name="rx_weight_f[]" class="form-control" /></td>';
                             html += '<td><select name="exercise_id[]" class="custom-select"><option selected>Exercise select</option>@foreach ($exercises as $exercise)<option value="{{ $exercise->id }}">{{ $exercise->name }}</option>@endforeach</select></td>';
-                            html += '<td><select name="metric[]" class="custom-select"><option selected>Metric select</option><option value="distance">Distance</option><option value="reps">Reps</option><option value="time">Time</option><option value="weight">Weight</option></select></td>';
+                            html += '<td><select name="metric_id[]" class="custom-select"><option selected>Metric select</option>@foreach ($metrics as $metric)<option value="{{ $metric->id }}">{{ $metric->name }}</option>@endforeach</select></td>';
                             html += '<input type="hidden" name="wod_id[]" class="form-control" value="{{ $wod->id }}" />'
                             if(number > 1)
                             {

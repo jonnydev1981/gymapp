@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exercise;
+use App\Metric;
 use App\Style;
 use App\Wod;
 use App\Workout;
@@ -52,7 +53,7 @@ class WodController extends Controller
 
             $wod = Wod::create($request->all());
 
-            return view('wods.create')->with('wod',$wod)->with('success','WOD created successfully!')->with('exercises', Exercise::all());
+            return view('wods.create')->with('wod',$wod)->with('success','WOD created successfully!')->with('exercises', Exercise::all())->with('metrics', Metric::all());
         }
     }
 

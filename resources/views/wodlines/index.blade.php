@@ -27,7 +27,7 @@
                     <td>{{ $wodline->rx_reps }}</td>
                     <td>{{ $wodline->rx_weight_m }}</td>
                     <td>{{ $wodline->rx_weight_f }}</td>
-                    <td>{{ $wodline->metric }}</td>
+                    <td>{{ $wodline->metric->name }}</td>
                     <td><a href="{{ route('exercise.show', $wodline->exercise->id) }}">{{ $wodline->exercise->name }}</a></td>
                 </tr>
             @endforeach

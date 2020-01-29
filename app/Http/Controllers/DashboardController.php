@@ -14,15 +14,15 @@ class DashboardController extends Controller
 {
     public function index() {
         $distanceStats = Statistic::where('user_id', Auth::id())
-        ->where('metric', 'distance')
+        ->where('metric_id', '1')
         ->get();
 
         $timeStats = Statistic::where('user_id', Auth::id())
-        ->where('metric', 'time')
+        ->where('metric_id', '3')
         ->get();
 
         $weightStats = Statistic::where('user_id', Auth::id())
-        ->where('metric', 'weight')
+        ->where('metric_id', '4')
         ->get();
 
         return view ('dashboards.index')

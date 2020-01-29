@@ -16,6 +16,7 @@
                 <th scope="col">Reps</th>
                 <th scope="col">Exercise</th>
                 <th scope="col">Weight (KG)</th>
+                <th scope="col">Metric</th>
                 <th scope="col">Scaled</th>
                 <th scope="col">Completed</th>
                 </tr>
@@ -27,6 +28,7 @@
                     <td>{{ $workoutline->reps }}</td>
                     <td><a href="{{ route('exercise.show', $workoutline->exercise->id) }}">{{ $workoutline->exercise->name }}</a></td>
                     <td>{{ $workoutline->weight }}</td>
+                    <td>{{ $workoutline->metric->name }}</td>
                     <td>
                         @if ($workoutline->scaled === '1')
                             <span class="badge badge-danger">Yes</span>
