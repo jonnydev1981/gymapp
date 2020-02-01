@@ -113,8 +113,8 @@
                     <tr>
                         <th>Set #</th>
                         <th>RX Reps</th>
-                        <th>RX Weight (M)</th>
-                        <th>RX Weight (F)</th>
+                        <th>RX Amount (M)</th>
+                        <th>RX Amount (F)</th>
                         <th>Measurement</th>
                         <th>Exercise</th>
                         <th>Metric</th>
@@ -148,8 +148,8 @@
                         html = '<tr>';
                             html += '<td><input type="text" name="order[]" class="form-control" /></td>';
                             html += '<td><input type="text" name="rx_reps[]" class="form-control" /></td>';
-                            html += '<td><input type="text" name="rx_weight_m[]" class="form-control" /></td>';
-                            html += '<td><input type="text" name="rx_weight_f[]" class="form-control" /></td>';
+                            html += '<td><input type="text" name="rx_amount_m[]" class="form-control" /></td>';
+                            html += '<td><input type="text" name="rx_amount_f[]" class="form-control" /></td>';
                             html += '<td><select name="measurement_id[]" class="custom-select"><option selected>Measurement select</option>@foreach ($measurements as $measurement)<option value="{{ $measurement->id }}">{{ $measurement->abbreviation }}</option>@endforeach</select></td>';
                             html += '<td><select name="exercise_id[]" class="custom-select"><option selected>Exercise select</option>@foreach ($exercises as $exercise)<option value="{{ $exercise->id }}">{{ $exercise->name }}</option>@endforeach</select></td>';
                             html += '<td><select name="metric_id[]" class="custom-select"><option selected>Metric select</option>@foreach ($metrics as $metric)<option value="{{ $metric->id }}">{{ $metric->name }}</option>@endforeach</select></td>';

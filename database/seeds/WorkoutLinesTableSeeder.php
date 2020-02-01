@@ -15,7 +15,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '1',
             'reps' => '8',
-            'weight' => '40',
+            'amount' => '40',
             'scaled' => false,
             'completed' => true,
             'metric_id' => '4',
@@ -26,7 +26,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '2',
             'reps' => '8',
-            'weight' => '40',
+            'amount' => '40',
             'scaled' => false,
             'completed' => true,
             'metric_id' => '4',
@@ -37,7 +37,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '3',
             'reps' => '8',
-            'weight' => '40',
+            'amount' => '40',
             'scaled' => false,
             'completed' => true,
             'metric_id' => '4',
@@ -48,7 +48,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '4',
             'reps' => '8',
-            'weight' => '40',
+            'amount' => '40',
             'scaled' => false,
             'completed' => true,
             'metric_id' => '4',
@@ -59,7 +59,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '1',
             'reps' => '4',
-            'weight' => '30',
+            'amount' => '30',
             'scaled' => true,
             'completed' => true,
             'metric_id' => '3',
@@ -70,7 +70,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '2',
             'reps' => '4',
-            'weight' => '30',
+            'amount' => '30',
             'scaled' => true,
             'completed' => true,
             'metric_id' => '3',
@@ -81,7 +81,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '3',
             'reps' => '4',
-            'weight' => '30',
+            'amount' => '30',
             'scaled' => true,
             'completed' => true,
             'metric_id' => '3',
@@ -92,7 +92,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '4',
             'reps' => '4',
-            'weight' => '30',
+            'amount' => '30',
             'scaled' => true,
             'completed' => true,
             'metric_id' => '3',
@@ -103,7 +103,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '5',
             'reps' => '4',
-            'weight' => '30',
+            'amount' => '30',
             'scaled' => true,
             'completed' => true,
             'metric_id' => '3',
@@ -114,7 +114,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '1',
             'reps' => '21',
-            'weight' => '40',
+            'amount' => '40',
             'scaled' => false,
             'completed' => true,
             'metric_id' => '3',
@@ -125,7 +125,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '2',
             'reps' => '15',
-            'weight' => '40',
+            'amount' => '40',
             'scaled' => false,
             'completed' => true,
             'metric_id' => '3',
@@ -136,7 +136,7 @@ class WorkoutLinesTableSeeder extends Seeder
         WorkoutLine::create([
             'order' => '3',
             'reps' => '8',
-            'weight' => '40',
+            'amount' => '40',
             'scaled' => false,
             'completed' => false,
             'metric_id' => '3',

@@ -18,8 +18,8 @@ class CreateWodLinesTable extends Migration
 
             $table->integer('order');
             $table->integer('rx_reps');
-            $table->integer('rx_weight_m');
-            $table->integer('rx_weight_f');
+            $table->integer('rx_amount_m');
+            $table->integer('rx_amount_f');
             
             $table->integer('metric_id')->unsigned();
             $table->foreign('metric_id')->references('id')->on('metrics');

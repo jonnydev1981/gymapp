@@ -40,8 +40,8 @@ class WodLineController extends Controller
             $rules = array(
                 'order.*'  => 'required',
                 'rx_reps.*'  => 'required',
-                'rx_weight_m.*'  => 'required',
-                'rx_weight_f.*'  => 'required',
+                'rx_amount_m.*'  => 'required',
+                'rx_amount_f.*'  => 'required',
                 'exercise_id.*'  => 'required',
                 'metric_id.*' => 'required',
                 'measurement_id.*' => 'required',
@@ -55,8 +55,8 @@ class WodLineController extends Controller
 
             $order = $request->order;
             $rx_reps = $request->rx_reps;
-            $rx_weight_m = $request->rx_weight_m;
-            $rx_weight_f = $request->rx_weight_f;
+            $rx_amount_m = $request->rx_amount_m;
+            $rx_amount_f = $request->rx_amount_f;
             $exercise_id = $request->exercise_id;
             $metric_id = $request->metric_id;
             $measurement_id = $request->measurement_id;
@@ -65,8 +65,8 @@ class WodLineController extends Controller
                 $data = array(
                     'order' => $order[$count],
                     'rx_reps' => $rx_reps[$count],
-                    'rx_weight_m' => $rx_weight_m[$count],
-                    'rx_weight_f' => $rx_weight_f[$count],
+                    'rx_amount_m' => $rx_amount_m[$count],
+                    'rx_amount_f' => $rx_amount_f[$count],
                     'exercise_id' => $exercise_id[$count],
                     'metric_id' => $metric_id[$count],
                     'measurement_id' => $measurement_id[$count],

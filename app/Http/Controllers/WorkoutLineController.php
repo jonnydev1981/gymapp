@@ -47,8 +47,8 @@ class WorkoutLineController extends Controller
         $order = $request->order;
         $reps = $request->reps;
         $rx_reps = $request->rx_reps;
-        $weight = $request->weight;
-        $rx_weight = $request->rx_weight;
+        $amount = $request->amount;
+        $rx_amount = $request->rx_amount;
         $workout_id = $request->workout_id;
         $exercise_id = $request->exercise_id;
         $metric_id = $request->metric_id;
@@ -56,14 +56,14 @@ class WorkoutLineController extends Controller
 
         foreach ($order as $key => $no) {
             // Check if completed
-            if ($reps[$key] === $rx_reps[$key] && $weight[$key] === $rx_weight[$key]) {
+            if ($reps[$key] === $rx_reps[$key] && $amount[$key] === $rx_amount[$key]) {
                 $completed = true;
             } else {
                 $completed = false;
             }
 
             // Check if RX'ed
-            if ($weight[$key] === $rx_weight[$key]) {
+            if ($amount[$key] === $rx_amount[$key]) {
                 $scaled = false;
             } else {
                 $scaled = true;
@@ -77,7 +77,7 @@ class WorkoutLineController extends Controller
             $workoutLine->measurement()->associate(Measurement::find($measurement_id[$key]));
             $workoutLine->order = $no;
             $workoutLine->reps = $reps[$key];
-            $workoutLine->weight = $weight[$key];
+            $workoutLine->amount = $amount[$key];
             $workoutLine->scaled = $scaled;
             $workoutLine->completed = $completed;
             $workoutLine->save();
