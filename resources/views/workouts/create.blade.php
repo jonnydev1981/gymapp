@@ -193,6 +193,7 @@
                     <th scope="col">Reps</th>
                     <th scope="col">RX Weight</th>
                     <th scope="col">Weight (KG)</th>
+                    <th scope="col">Measurement</th>
                     <th scope="col">Metric</th>
                     <th scope="col">Exercise</th>
                 </tr>
@@ -226,6 +227,10 @@
                         
                         <td>
                             <input type="number" name="weight[]" maxlength="6" size="6">
+                        </td>
+                        <td>
+                            <input type="hidden" name="measurement_id[]" value="{{ $wodline->measurement->id }}">
+                            {{ $wodline->measurement->abbreviation }}
                         </td>
                         <td>
                             <input type="hidden" name="metric_id[]" value="{{ $wodline->metric->id }}">

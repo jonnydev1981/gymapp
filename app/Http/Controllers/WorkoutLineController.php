@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exercise;
+use App\Measurement;
 use App\Metric;
 use App\Statistic;
 use App\User;
@@ -51,6 +52,7 @@ class WorkoutLineController extends Controller
         $workout_id = $request->workout_id;
         $exercise_id = $request->exercise_id;
         $metric_id = $request->metric_id;
+        $measurement_id = $request->measurement_id;
 
         foreach ($order as $key => $no) {
             // Check if completed
@@ -72,6 +74,7 @@ class WorkoutLineController extends Controller
             $workoutLine->workout()->associate(Workout::find($workout_id[$key]));
             $workoutLine->exercise()->associate(Exercise::find($exercise_id[$key]));
             $workoutLine->metric()->associate(Metric::find($metric_id[$key]));
+            $workoutLine->measurement()->associate(Measurement::find($measurement_id[$key]));
             $workoutLine->order = $no;
             $workoutLine->reps = $reps[$key];
             $workoutLine->weight = $weight[$key];
