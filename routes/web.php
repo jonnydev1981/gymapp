@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', 'DashboardController@index')->middleware(['auth'])->name('dashboard');
 Route::resource('workout','WorkoutController')->middleware(['auth']);
 Route::resource('dashboard','DashboardController')->middleware(['auth']);
 Route::resource('exercise','ExerciseController')->middleware(['auth']);
