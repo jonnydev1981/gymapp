@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Workout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +15,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $workouts = Workout::where('user_id', Auth::id())->limit(5);
+
+        return view('dashboard')->with('weightstats', $workouts);
     }
 
     /**
