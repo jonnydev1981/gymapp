@@ -21,8 +21,10 @@ class Workouts extends Component
 
     public function render()
     {
-        return view('livewire.workouts', [
-            'workouts' => Workout::where('user_id', Auth::id())->orderBy('performed')]
+        return view('livewire.workouts',
+            [
+                'workouts' => Workout::where('user_id', Auth::id())->orderBy('performed')->get()
+            ]
         );
     }
 
