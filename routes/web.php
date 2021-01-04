@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('workout','WorkoutController')->middleware(['auth']);
+Route::resource('workout','WorkoutController')->middleware(['auth:sanctum', 'verified']);
 Route::resource('dashboard','DashboardController')->middleware(['auth:sanctum', 'verified']);
-Route::resource('exercise','ExerciseController')->middleware(['auth']);
+Route::resource('exercise','ExerciseController')->middleware(['auth:sanctum', 'verified']);
 
 require __DIR__.'/auth.php';
 
