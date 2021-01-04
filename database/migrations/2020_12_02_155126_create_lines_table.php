@@ -19,7 +19,7 @@ class CreateLinesTable extends Migration
             $table->integer('set_no');
             $table->integer('reps');
             $table->integer('weight_kg');
-            $table->longtext('notes');
+            $table->longtext('notes')->nullable();
 
             //$table->unsignedBigInteger('exercise_id');
             //$table->foreign('exercise_id')->references('id')->on('exercises');

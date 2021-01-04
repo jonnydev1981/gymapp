@@ -16,23 +16,6 @@ class Workout extends Model
         'user_id',
     ];
 
-    /**
-     * This is model Observer which helps to do the same actions automatically when you creating or updating models
-     *
-     * @var array
-     */
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($model) {
-            $model->created_by = Auth::id();
-            $model->updated_by = Auth::id();
-        });
-        static::updating(function ($model) {
-            $model->updated_by = Auth::id();
-        });
-    }
-
     public function user(){
         return $this->belongsTo('App\User');
     }
