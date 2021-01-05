@@ -23,7 +23,11 @@
                         <tr>
                             <th
                                 class="px-5 py-3 border-b-2 border-black bg-black text-left text-xs font-semibold text-white uppercase tracking-wider">
-                                {{ __('Title') }}
+                                {{ __('Name') }}
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-black bg-black text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                {{ __('Performed') }}
                             </th>
                             <th
                                 class="px-5 py-3 border-b-2 border-black bg-black text-left text-xs font-semibold text-white uppercase tracking-wider">
@@ -35,6 +39,9 @@
                             <tr>
                                 <td class="px-5 py-5 bg-white text-sm @if (!$loop->last) border-gray-200 border-b @endif">
                                     {{ Str::limit($workout->name, 25) }}
+                                </td>
+                                <td class="px-5 py-5 bg-white text-sm @if (!$loop->last) border-gray-200 border-b @endif">
+                                    {{ Str::limit($workout->performed, 25) }}
                                 </td>
                                 <td class="px-5 py-5 bg-white text-sm @if (!$loop->last) border-gray-200 border-b @endif text-right">
                                     <div class="inline-block whitespace-no-wrap">
@@ -60,15 +67,18 @@
                                 <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                 <div class="flex flex-wrap -mx-3 mb-6">
                                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                    <label for="noInput" class="block text-gray-700 text-sm font-bold mb-2">No:</label>
-                                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="noInput" placeholder="Enter No" wire:model="no">
+                                    <label for="noName" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="noName" placeholder="Enter Name" wire:model="name">
                                     @error('no') <span class="text-red-500">{{ $message }}</span>@enderror
                                     </div>
                                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                    <label for="titleInput" class="block text-gray-700 text-sm font-bold mb-2">Title:</label>
-                                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="titleInput" placeholder="Enter Title" wire:model="title">
+                                    <label for="performedInput" class="block text-gray-700 text-sm font-bold mb-2">Performed:</label>
+                                    <input type="datetime-local" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="performedInput" placeholder="Choose performed date/time" wire:model="performed">
                                     @error('title') <span class="text-red-500">{{ $message }}</span>@enderror
                                     </div>
+                                </div>
+                                <div class="flex flex-wrap -mx-3 mb-6">
+                                    <p>Workout lines here</p>
                                 </div>
                                 </div>
                                 <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
