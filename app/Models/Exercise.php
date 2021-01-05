@@ -16,6 +16,6 @@ class Exercise extends Model
     ];
 
     public function lines(){
-        return $this->hasMany('App\Line');
+        return $this->hasMany('App\Models\Line');
     }
 }

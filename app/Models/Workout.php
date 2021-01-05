@@ -17,10 +17,10 @@ class Workout extends Model
     ];
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function lines(){
-        return $this->hasMany('App\Line');
+        return $this->hasMany('App\Models\Line');
     }
 }

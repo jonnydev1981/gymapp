@@ -67,18 +67,33 @@
                                 <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                 <div class="flex flex-wrap -mx-3 mb-6">
                                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                    <label for="noName" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="noName" placeholder="Enter Name" wire:model="name">
-                                    @error('no') <span class="text-red-500">{{ $message }}</span>@enderror
+                                    <label for="nameInput" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                                    <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nameInput" placeholder="Enter Name" wire:model="name">
+                                    @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
                                     </div>
                                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                     <label for="performedInput" class="block text-gray-700 text-sm font-bold mb-2">Performed:</label>
                                     <input type="datetime-local" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="performedInput" placeholder="Choose performed date/time" wire:model="performed">
-                                    @error('title') <span class="text-red-500">{{ $message }}</span>@enderror
+                                    @error('performed') <span class="text-red-500">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
                                 <div class="flex flex-wrap -mx-3 mb-6">
-                                    <p>Workout lines here</p>
+                                    <table>
+                                        <th>Set No</th>
+                                        <th>Reps</th>
+                                        <th>Weight (KG)</th>
+                                        <th>Notes</th>
+                                        <th>Exercise</th>
+                                        @foreach($workout->lines as $line)
+                                            <tr>
+                                                <td>{{ $line->set_no }}</td>
+                                                <td>{{ $line->reps }}</td>
+                                                <td>{{ $line->weight_kg }}</td>
+                                                <td>{{ $line->notes }}</td>
+                                                <td>{{ $line->exercise->name }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
                                 </div>
                                 </div>
                                 <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
