@@ -86,10 +86,10 @@
                                         <th>Exercise</th>
                                         @foreach($workout->lines as $line)
                                             <tr>
-                                                <td>{{ $line->set_no }}</td>
-                                                <td>{{ $line->reps }}</td>
-                                                <td>{{ $line->weight_kg }}</td>
-                                                <td>{{ $line->notes }}</td>
+                                                <td><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="setnoInput" value="{{ $line->set_no }}"  maxlength="2" size="2"></td>
+                                                <td><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="repsInput" value="{{ $line->reps }}"  maxlength="2" size="2"></td>
+                                                <td><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="weightkgInput" value="{{ $line->weight_kg }}" maxlength="3" size="3"></td>
+                                                <td><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="notesInput" value="{{ $line->notes }}" maxlength="80" size="80"></td>
                                                 <td>{{ $line->exercise->name }}</td>
                                             </tr>
                                         @endforeach
