@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Workout;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class Workouts extends Component
@@ -105,7 +106,7 @@ class Workouts extends Component
         $workout = Workout::findOrFail($id);
         $this->workout_id = $id;
         $this->name = $workout->name;
-        $this->performed = $workout->performed;
+        $this->performed = Carbon::parse($workout->performed)->format('Y-m-d\TH:i');
         $this->openModal();
     }
 
