@@ -19,10 +19,10 @@ class Line extends Model
     ];
 
     public function workout(){
-        return $this->belongsTo('App\Models\Workout');
+        return $this->belongsTo(Workout::class);
     }
 
     public function exercise(){
-        return $this->belongsTo('App\Models\Exercise');
+        return $this->belongsTo(Exercise::class);
     }
 }
