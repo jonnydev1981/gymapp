@@ -17,16 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::resource('workout','WorkoutController')->middleware(['auth:sanctum', 'verified']);
-
-Route::get('/workouts', App\Http\Livewire\Workouts::class)->middleware(['auth:sanctum', 'verified'])->name('workouts');
-Route::resource('dashboard', 'App\Http\Controllers\DashboardController')->middleware(['auth:sanctum', 'verified']);
-Route::resource('exercise', 'App\Http\Controllers\ExerciseController')->middleware(['auth:sanctum', 'verified']);
-
 require __DIR__.'/auth.php';
 
-/*
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-*/
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
