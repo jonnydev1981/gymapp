@@ -22,8 +22,6 @@ class WorkoutController extends Controller
                 ->workoutsRepository
                 ->all();
 
-        dd($workoutsFetch);
-
         if ($workoutsFetch->hasError()) {
             return response()->json($workoutsFetch->getItems(), 500);
         }
