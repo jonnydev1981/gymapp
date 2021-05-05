@@ -1,7 +1,7 @@
 <?php
 
-//use App\Http\Controllers\Api\UserController;
-//use App\Http\Controllers\Api\WorkoutController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\WorkoutController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,22 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::prefix('users')->group(function () {
-    Route::get('/', 'Api\UserController@index')->name('users.list');
-    Route::post('/', 'Api\UserController@store')->name('users.store');
-    Route::get('/{id}', 'Api\UserController@show')->name('users.show');
-    Route::put('/{id}', 'Api\UserController@update')->name('users.update');
-    Route::delete('/{id}', 'Api\UserController@delete')->name('users.delete');
-});
+Route::get('users', [UserController::class, 'index'])->name('users');
+Route::post('users', [UserController::class, 'store'])->name('users.store');
+Route::get('users/{id}', [UserController::class, 'show'])->name('users.store');
+Route::put('users/{id}', [UserController::class, 'update'])->name('users.store');
+Route::delete('users/{id}', [UserController::class, 'delete'])->name('users.delete');
 
-Route::prefix('workouts')->group(function () {
-    Route::get('/', 'Api\WorkoutController@index')->name('workouts.list');
-    Route::post('/', 'Api\WorkoutController@store')->name('workouts.store');
-    Route::get('/{id}', 'Api\WorkoutController@show')->name('workouts.show');
-    Route::put('/{id}', 'Api\WorkoutController@update')->name('workouts.update');
-    Route::delete('/{id}', 'Api\WorkoutController@delete')->name('workouts.delete');
-});
+Route::get('workouts', [WorkoutController::class, 'index'])->name('workouts');
+Route::post('workouts', [WorkoutController::class, 'store'])->name('workouts.store');
+Route::get('workouts/{id}', [WorkoutController::class, 'show'])->name('workouts.show');
+Route::put('workouts/{id}', [WorkoutController::class, 'update'])->name('workouts.update');
+Route::delete('workouts/{id}', [WorkoutController::class, 'delete'])->name('workouts.delete');
